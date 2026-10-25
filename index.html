@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fernanda Casali — Data & Analytics Engineering</title>
+<meta name="description" content="Portfólio de Fernanda Theodoro Casali — Engenharia da Computação · Dados, Business Intelligence e Engenharia de Dados." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   PALETTE — Café de la Vie
+   ============================================================ */
+:root{
+  --lilac:#B48EAD;
+  --sage:#A7B48A;
+  --peach:#FFD9B3;
+  --butter:#F2E394;
+  --teal:#436D6D;
+  --teal-ink:#2E4D4D;
+  --cream:#FBF5EB;
+  --cream-2:#F3EAD9;
+  --ink:#1F2A2A;
+  --muted:#6B7A74;
+  --line:rgba(67,109,109,.18);
+
+  --serif:'Fraunces',serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'DM Mono',ui-monospace,monospace;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--teal);color:var(--cream)}
+
+/* ============================================================
+   GRAIN + NOISE OVERLAY — paper feel
+   ============================================================ */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.06;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.26 0 0 0 0 0.3 0 0 0 0 0.3 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+.cursor,.cursor-dot{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;mix-blend-mode:multiply}
+.cursor{width:36px;height:36px;border:1.5px solid var(--teal);transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s var(--ease),opacity .3s}
+.cursor-dot{width:6px;height:6px;background:var(--teal);transform:translate(-50%,-50%)}
+.cursor.hover{width:72px;height:72px;background:rgba(180,142,173,.35);border-color:transparent}
+@media(hover:none){.cursor,.cursor-dot{display:none}}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px clamp(24px,5vw,56px);
+  background:linear-gradient(to bottom,var(--cream) 20%,transparent);
+  transition:padding .4s var(--ease);
+}
+.nav.scrolled{padding:14px clamp(24px,5vw,56px);background:rgba(251,245,235,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-weight:500;font-size:1.25rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.5}}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-links{display:none;gap:28px;font-size:.84rem;font-weight:500;letter-spacing:.02em}
+.nav-links a{position:relative;padding:4px 0;color:var(--teal-ink)}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a .num{color:var(--lilac);font-family:var(--mono);font-size:.7rem;margin-right:5px}
+@media(min-width:900px){.nav-links{display:flex}}
+.lang-switch{display:flex;align-items:center;gap:0;font-family:var(--mono);font-size:.78rem;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--cream)}
+.lang-switch button{background:none;border:none;padding:7px 14px;cursor:pointer;color:var(--muted);font-family:inherit;font-size:inherit;transition:.3s}
+.lang-switch button.on{background:var(--teal);color:var(--cream)}
+
+/* ============================================================
+   PROGRESS BAR
+   ============================================================ */
+.progress{position:fixed;top:0;left:0;height:2px;z-index:70;background:var(--teal);width:0;transition:width .1s linear}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+section{position:relative;padding:140px clamp(24px,5vw,56px);z-index:2}
+.wrap{max-width:1240px;margin:0 auto}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);
+  margin-bottom:28px;
+}
+.eyebrow::before{content:"";width:36px;height:1px;background:var(--teal)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.05;color:var(--ink)}
+.italic{font-style:italic;font-weight:300;color:var(--teal)}
+
+/* ============================================================
+   REVEAL — scroll animations
+   ============================================================ */
+.r{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.r.in{opacity:1;transform:none}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.18s}.r.d3{transition-delay:.28s}.r.d4{transition-delay:.38s}.r.d5{transition-delay:.48s}.r.d6{transition-delay:.58s}
+
+/* reveal letter-by-letter */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top}
+.split .w b{display:inline-block;font-weight:inherit;transform:translateY(110%);transition:transform 1s var(--ease)}
+.split.in .w b{transform:translateY(0)}
+.split .w:nth-child(1) b{transition-delay:.05s}
+.split .w:nth-child(2) b{transition-delay:.12s}
+.split .w:nth-child(3) b{transition-delay:.19s}
+.split .w:nth-child(4) b{transition-delay:.26s}
+.split .w:nth-child(5) b{transition-delay:.33s}
+.split .w:nth-child(6) b{transition-delay:.4s}
+.split .w:nth-child(7) b{transition-delay:.47s}
+.split .w:nth-child(8) b{transition-delay:.54s}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{min-height:100vh;padding-top:160px;padding-bottom:60px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-bg .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 22s ease-in-out infinite}
+.hero-bg .b1{width:520px;height:520px;background:var(--lilac);top:-120px;right:-80px}
+.hero-bg .b2{width:420px;height:420px;background:var(--butter);bottom:-100px;left:-60px;animation-delay:-7s;opacity:.65}
+.hero-bg .b3{width:360px;height:360px;background:var(--sage);top:40%;left:40%;animation-delay:-13s;opacity:.35}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.1)}66%{transform:translate(-30px,25px) scale(.92)}}
+
+.hero-inner{position:relative;z-index:2;display:grid;gap:40px}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.hero-greeting{font-family:var(--mono);font-size:.82rem;color:var(--teal);letter-spacing:.12em;display:flex;align-items:center;gap:14px}
+.hero-greeting::before{content:"";width:40px;height:1px;background:var(--teal)}
+.hero-loc{font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-align:right}
+.hero-loc b{display:block;color:var(--teal-ink);font-weight:500;margin-bottom:4px;font-family:var(--serif);font-style:italic;font-size:1rem}
+
+.hero h1{
+  font-size:clamp(3.6rem,13vw,10rem);
+  font-weight:300;
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+.hero h1 .amp{font-style:italic;color:var(--lilac);font-weight:300}
+.hero h1 .accent{position:relative;display:inline-block}
+.hero h1 .accent svg{position:absolute;left:-6%;bottom:-6%;width:112%;height:auto;z-index:-1;color:var(--butter)}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--teal)}
+
+.hero-sub{display:grid;grid-template-columns:1fr;gap:40px;margin-top:30px;align-items:end}
+@media(min-width:900px){.hero-sub{grid-template-columns:1fr auto}}
+.hero-lead{font-family:var(--serif);font-weight:300;font-size:clamp(1.1rem,2.2vw,1.5rem);line-height:1.5;max-width:52ch;color:var(--teal-ink)}
+.hero-lead .mono{font-family:var(--mono);font-size:.72em;color:var(--lilac);background:rgba(180,142,173,.14);padding:2px 10px;border-radius:999px;margin:0 2px;vertical-align:middle}
+
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:16px 28px;border-radius:999px;
+  font-family:var(--sans);font-weight:500;font-size:.88rem;letter-spacing:.03em;
+  cursor:pointer;border:1px solid var(--teal);background:var(--teal);color:var(--cream);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 18px 38px -14px rgba(67,109,109,.5)}
+.btn.ghost{background:transparent;color:var(--teal-ink)}
+.btn .arr{display:inline-block;transition:transform .4s var(--ease)}
+.btn:hover .arr{transform:translateX(5px)}
+
+.scroll-tip{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.18em;margin-top:50px}
+.scroll-tip .line{width:48px;height:1px;background:var(--muted);position:relative;overflow:hidden}
+.scroll-tip .line::after{content:"";position:absolute;left:-20px;top:0;width:20px;height:100%;background:var(--teal);animation:slide 2.2s ease-in-out infinite}
+@keyframes slide{0%{left:-20px}100%{left:48px}}
+
+/* ============================================================
+   MARQUEE TAGS
+   ============================================================ */
+.marquee{
+  position:relative;z-index:2;
+  margin-top:40px;padding:22px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  overflow:hidden;
+  background:var(--cream-2);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+.marquee-track{display:flex;gap:48px;animation:marq 36s linear infinite;width:max-content}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--teal-ink);display:inline-flex;align-items:center;gap:48px;white-space:nowrap}
+.marquee span::after{content:"✦";color:var(--lilac);font-style:normal}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+.about-grid{display:grid;gap:60px;grid-template-columns:1fr;align-items:start}
+@media(min-width:900px){.about-grid{grid-template-columns:.9fr 1.1fr;gap:80px}}
+.about h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.about-left{position:sticky;top:120px}
+.portrait{
+  position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+  background:linear-gradient(145deg,var(--peach),var(--lilac));
+  box-shadow:0 50px 100px -40px rgba(67,109,109,.3);
+}
+.portrait .initials{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--serif);font-weight:300;font-size:12rem;color:rgba(255,255,255,.9);
+  font-style:italic;letter-spacing:-.05em;
+}
+.portrait .ribbon{
+  position:absolute;top:28px;left:-30px;transform:rotate(-6deg);
+  background:var(--teal);color:var(--cream);padding:8px 44px;font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+}
+.portrait .badge{
+  position:absolute;bottom:24px;right:24px;
+  width:120px;height:120px;border-radius:50%;background:var(--butter);
+  display:grid;place-items:center;text-align:center;
+  font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--teal-ink);
+  animation:spin 18s linear infinite;line-height:1.2;
+}
+.badge-text{position:absolute;inset:0}
+.badge-text text{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;fill:var(--teal-ink);text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.about-right p{font-family:var(--serif);font-weight:300;font-size:clamp(1.08rem,1.8vw,1.3rem);line-height:1.6;color:var(--teal-ink);margin-bottom:24px}
+.about-right p:first-of-type{font-size:clamp(1.2rem,2.2vw,1.55rem);color:var(--ink)}
+.about-right p .hl{background:linear-gradient(transparent 55%,var(--butter) 55%);padding:0 3px}
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+.value{
+  padding:22px;border-radius:14px;background:var(--cream);border:1px solid var(--line);
+  transition:transform .5s var(--ease),background .5s var(--ease);
+}
+.value:hover{transform:translateY(-5px);background:var(--peach)}
+.value .ico{font-family:var(--serif);font-size:1.6rem;color:var(--lilac);margin-bottom:8px}
+.value h4{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+.value p{font-family:var(--sans);font-weight:400;font-size:.85rem;color:var(--muted);margin:0;line-height:1.5}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+.exp-wrap{display:grid;gap:30px;margin-top:60px}
+.exp-row{
+  position:relative;padding:36px 0;border-top:1px solid var(--line);
+  display:grid;gap:30px;grid-template-columns:1fr;align-items:start;
+  transition:background .5s var(--ease),padding .5s var(--ease);
+  cursor:pointer;
+}
+.exp-row:last-child{border-bottom:1px solid var(--line)}
+@media(min-width:800px){.exp-row{grid-template-columns:.9fr 2fr .5fr;padding:46px 24px;margin:0 -24px;border-radius:16px}}
+.exp-row:hover{background:var(--cream-2)}
+.exp-when{font-family:var(--mono);font-size:.78rem;color:var(--teal);letter-spacing:.08em}
+.exp-body h3{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:4px;transition:transform .5s var(--ease)}
+.exp-row:hover .exp-body h3{transform:translateX(10px)}
+.exp-body .where{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--lilac);font-size:1.1rem;margin-bottom:16px}
+.exp-body ul{list-style:none;display:grid;gap:10px}
+.exp-body li{position:relative;padding-left:22px;color:var(--teal-ink);font-size:.95rem;line-height:1.6}
+.exp-body li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:1px;background:var(--teal)}
+.exp-stat{font-family:var(--serif);font-size:3.5rem;font-weight:300;color:var(--teal);line-height:1;font-style:italic;text-align:right}
+.exp-stat small{display:block;font-family:var(--mono);font-style:normal;font-size:.7rem;color:var(--muted);letter-spacing:.14em;margin-top:6px}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.projects{background:var(--teal);color:var(--cream);overflow:hidden}
+.projects h2,.projects .eyebrow,.projects .eyebrow::before{color:var(--peach)}
+.projects .eyebrow::before{background:var(--peach)}
+.projects h2{color:var(--cream)}
+.projects .ital{color:var(--butter);font-style:italic;font-weight:300}
+
+.proj-grid{display:grid;gap:28px;margin-top:70px;grid-template-columns:1fr}
+@media(min-width:800px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+.proj{
+  position:relative;padding:40px 36px;border-radius:22px;overflow:hidden;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,217,179,.14);
+  transition:transform .6s var(--ease),background .6s var(--ease);
+  display:flex;flex-direction:column;justify-content:space-between;min-height:360px;
+}
+.proj::before{
+  content:"";position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .6s var(--ease);
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,217,179,.22),transparent 50%);
+}
+.proj:hover::before{opacity:1}
+.proj:hover{transform:translateY(-10px);background:rgba(255,255,255,.08)}
+.proj>*{position:relative;z-index:1}
+.proj-num{font-family:var(--mono);font-size:.76rem;color:var(--butter);letter-spacing:.14em}
+.proj h3{color:var(--cream);font-size:2rem;font-weight:400;margin:18px 0 14px}
+.proj h3 em{color:var(--butter);font-style:italic;font-weight:300}
+.proj p{color:#dcd1b8;font-size:.95rem;line-height:1.6;margin-bottom:22px;max-width:48ch}
+.proj-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.proj-tags span{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--peach);padding:5px 11px;border:1px solid rgba(255,217,179,.3);border-radius:999px}
+.proj.hero-card{grid-column:1/-1;background:linear-gradient(135deg,rgba(180,142,173,.14),rgba(242,227,148,.08))}
+.proj.hero-card h3{font-size:clamp(2.2rem,4.5vw,3.4rem)}
+.featured{position:absolute;top:28px;right:28px;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--teal);background:var(--butter);padding:6px 12px;border-radius:999px;text-transform:uppercase;z-index:2}
+.proj-metric{display:flex;gap:30px;margin-top:20px;flex-wrap:wrap}
+.proj-metric div{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--butter);line-height:1}
+.proj-metric div small{display:block;font-family:var(--mono);font-size:.66rem;color:var(--peach);letter-spacing:.12em;margin-top:6px}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills{background:var(--cream)}
+.skills-head{display:grid;gap:30px;grid-template-columns:1fr;align-items:end;margin-bottom:60px}
+@media(min-width:900px){.skills-head{grid-template-columns:1.6fr 1fr}}
+.skills h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.skills-head p{font-family:var(--serif);font-weight:300;font-size:1.1rem;color:var(--teal-ink);line-height:1.6}
+.skill-grid{display:grid;gap:2px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;grid-template-columns:1fr}
+@media(min-width:720px){.skill-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1080px){.skill-grid{grid-template-columns:repeat(3,1fr)}}
+.skill-cat{background:var(--cream);padding:34px 30px;transition:background .5s var(--ease);position:relative;overflow:hidden}
+.skill-cat::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--teal);transition:width .7s var(--ease)}
+.skill-cat:hover{background:var(--cream-2)}
+.skill-cat:hover::after{width:100%}
+.skill-cat .num{font-family:var(--mono);font-size:.72rem;color:var(--lilac);letter-spacing:.12em}
+.skill-cat h3{font-size:1.5rem;margin:6px 0 20px}
+.skill-chips{display:flex;flex-wrap:wrap;gap:7px}
+.skill-chips span{
+  font-family:var(--mono);font-size:.74rem;color:var(--teal-ink);
+  padding:6px 11px;border:1px solid var(--line);border-radius:999px;
+  transition:background .3s,color .3s,border-color .3s;
+}
+.skill-chips span:hover{background:var(--teal);color:var(--cream);border-color:var(--teal)}
+
+/* ============================================================
+   EDUCATION + LANGUAGES
+   ============================================================ */
+.edu{background:linear-gradient(180deg,var(--cream) 0%,var(--peach) 100%);overflow:hidden}
+.edu-grid{display:grid;gap:60px;grid-template-columns:1fr;margin-top:60px}
+@media(min-width:900px){.edu-grid{grid-template-columns:1.3fr 1fr}}
+.edu h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.edu-list{display:grid;gap:30px}
+.edu-item{position:relative;padding:28px 30px;background:rgba(251,245,235,.7);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(6px);transition:transform .5s var(--ease)}
+.edu-item:hover{transform:translateX(10px)}
+.edu-item .tag{font-family:var(--mono);font-size:.7rem;color:var(--lilac);letter-spacing:.14em;margin-bottom:8px}
+.edu-item h4{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:4px}
+.edu-item .inst{font-family:var(--serif);font-style:italic;color:var(--teal);margin-bottom:10px}
+.edu-item .desc{color:var(--muted);font-size:.9rem}
+
+.lang-panel{background:var(--cream);border-radius:20px;padding:40px 34px;border:1px solid var(--line);align-self:start}
+.lang-panel h3{font-size:1.6rem;margin-bottom:28px}
+.lang-row{margin-bottom:22px}
+.lang-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.lang-head b{font-family:var(--serif);font-weight:500;font-size:1.1rem}
+.lang-head span{font-family:var(--mono);font-size:.72rem;color:var(--teal);letter-spacing:.1em}
+.lang-bar{height:6px;background:rgba(67,109,109,.1);border-radius:999px;overflow:hidden}
+.lang-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--lilac));border-radius:999px;transition:width 1.6s var(--ease) .2s}
+.r.in .lang-bar i{width:var(--w)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{background:var(--teal);color:var(--cream);text-align:center;padding:160px clamp(24px,5vw,56px) 60px;overflow:hidden;position:relative}
+.contact .circle-bg{position:absolute;inset:auto;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(180,142,173,.3),transparent 60%);top:-200px;left:50%;transform:translateX(-50%);z-index:0}
+.contact>*{position:relative;z-index:1}
+.contact .eyebrow{color:var(--peach);justify-content:center}
+.contact .eyebrow::before{background:var(--peach)}
+.contact h2{color:var(--cream);font-size:clamp(2.8rem,8vw,6.2rem);line-height:1;margin-bottom:40px}
+.contact h2 em{color:var(--butter);font-style:italic;font-weight:300}
+.contact-lead{font-family:var(--serif);font-weight:300;font-size:clamp(1.1rem,1.8vw,1.4rem);color:#e8dec7;max-width:52ch;margin:0 auto 50px}
+.contact-cta{display:inline-flex;align-items:center;gap:16px;background:var(--butter);color:var(--teal-ink);padding:22px 40px;border-radius:999px;font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.contact-cta:hover{transform:translateY(-5px);box-shadow:0 25px 55px -20px rgba(242,227,148,.6)}
+.contact-cta .arr{transition:transform .4s var(--ease)}
+.contact-cta:hover .arr{transform:translateX(8px) rotate(-10deg)}
+.contact-list{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;margin-top:60px}
+.contact-list a{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.86rem;letter-spacing:.06em;color:var(--peach);position:relative;padding:6px 0}
+.contact-list a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.contact-list a:hover::after{transform:scaleX(1)}
+footer{padding:40px clamp(24px,5vw,56px) 20px;background:var(--teal);color:#9fb4b4;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,217,179,.1)}
+footer .sig{color:var(--peach)}
+
+/* ============================================================
+   SIDE INDEX
+   ============================================================ */
+.side-index{position:fixed;right:30px;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;gap:10px}
+@media(min-width:1100px){.side-index{display:flex}}
+.side-index a{
+  display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--muted);
+  padding:4px 0;transition:color .3s;
+}
+.side-index a .line{width:30px;height:1px;background:currentColor;transition:width .4s var(--ease)}
+.side-index a:hover,.side-index a.on{color:var(--teal)}
+.side-index a.on .line{width:48px}
+.projects ~ .side-index,.contact ~ .side-index{color:var(--peach)}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media(max-width:720px){
+  section{padding:100px 24px}
+  .hero{padding-top:140px}
+  .marquee span{font-size:1.2rem}
+  .exp-stat{font-size:2.4rem;text-align:left}
+  .portrait .initials{font-size:7rem}
+  .portrait .badge{width:90px;height:90px}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Progress -->
+<div class="progress" id="progress"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="dot"></span>
+    Fernanda<span style="color:var(--lilac);font-style:italic">.</span>Casali
+  </a>
+  <nav class="nav-right">
+    <div class="nav-links">
+      <a href="#about"><span class="num">01</span><span data-i18n="n1">Sobre</span></a>
+      <a href="#work"><span class="num">02</span><span data-i18n="n2">Trajetória</span></a>
+      <a href="#projects"><span class="num">03</span><span data-i18n="n3">Projetos</span></a>
+      <a href="#skills"><span class="num">04</span><span data-i18n="n4">Stack</span></a>
+      <a href="#contact"><span class="num">05</span><span data-i18n="n5">Contato</span></a>
+    </div>
+    <div class="lang-switch">
+      <button data-lang="pt" class="on">PT</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<!-- SIDE INDEX -->
+<nav class="side-index" id="sideIndex">
+  <a href="#top" data-s="top" class="on"><span class="line"></span>00</a>
+  <a href="#about" data-s="about"><span class="line"></span>01</a>
+  <a href="#work" data-s="work"><span class="line"></span>02</a>
+  <a href="#projects" data-s="projects"><span class="line"></span>03</a>
+  <a href="#skills" data-s="skills"><span class="line"></span>04</a>
+  <a href="#edu" data-s="edu"><span class="line"></span>05</a>
+  <a href="#contact" data-s="contact"><span class="line"></span>06</a>
+</nav>
+
+<!-- ================================================== HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-top">
+      <div class="hero-greeting r"><span data-i18n="hello">Olá, prazer —</span></div>
+      <div class="hero-loc r d1">
+        <b>Sorocaba · SP</b>
+        <span data-i18n="avail">Disponível para novas oportunidades</span>
+      </div>
+    </div>
+
+    <h1 class="split" id="heroTitle">
+      <span class="w"><b>Fernanda</b></span>
+      <span class="w"><b><em>Casali</em></b></span>
+      <span class="w"><b class="amp">—</b></span>
+      <br>
+      <span class="w"><b data-i18n="h-turn">transformo</b></span>
+      <span class="w"><b data-i18n="h-data">dados</b></span>
+      <span class="w"><b class="amp" data-i18n="h-in">em</b></span>
+      <span class="w"><b><em data-i18n="h-decision">decisão</em>.</b></span>
+    </h1>
+
+    <div class="hero-sub">
+      <p class="hero-lead r d4" data-i18n="hero-lead">
+        Engenheira da Computação <span class="mono">8º semestre</span> construindo
+        produtos de dados end-to-end — da ingestão em Python até o dashboard em
+        Power BI. Atualmente na <b style="color:var(--teal);font-weight:500;font-style:italic">Metso</b>,
+        onde automatizei processos que recuperaram <b style="color:var(--teal);font-weight:500">100% do tempo</b>
+        do analista.
+      </p>
+      <div class="hero-cta r d5">
+        <a class="btn" href="#contact">
+          <span data-i18n="cta1">Vamos conversar</span>
+          <span class="arr">→</span>
+        </a>
+        <a class="btn ghost" href="#projects">
+          <span data-i18n="cta2">Ver projetos</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-tip r d6">
+      <span class="line"></span>
+      <span data-i18n="scroll">Role para explorar</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Data Engineering</span><span>Analytics Engineering</span><span>Business Intelligence</span><span>Python · SQL · dbt</span><span>Snowflake · Power BI</span><span>Governança de Dados</span>
+    <span>Data Engineering</span><span>Analytics Engineering</span><span>Business Intelligence</span><span>Python · SQL · dbt</span><span>Snowflake · Power BI</span><span>Governança de Dados</span>
+  </div>
+</div>
+
+<!-- ================================================== ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="eyebrow r">01 · <span data-i18n="k-about">Sobre mim</span></div>
+    <div class="about-grid">
+      <div class="about-left r d1">
+        <div class="portrait">
+          <div class="ribbon">Est. 2004</div>
+          <div class="initials">Fc</div>
+          <div class="badge">
+            <svg class="badge-text" viewBox="0 0 120 120">
+              <defs><path id="circ" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"/></defs>
+              <text><textPath href="#circ">Data · Analytics · BI · Automation · </textPath></text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="about-right">
+        <h2 class="r d2" data-i18n="about-h">Dados que viram <span class="italic">estratégia</span>.</h2>
+        <p class="r d3" data-i18n="about-1" style="margin-top:36px">
+          Estudante de <span class="hl">Engenharia da Computação</span> na FACENS, 8º semestre, atuando como estagiária de Análise de Dados em Compras na Metso. Construo produtos de dados e KPIs reutilizáveis ao longo de todo o ciclo — ingestão, transformação, entrega e monitoramento.
+        </p>
+        <p class="r d4" data-i18n="about-2">
+          Perfil analítico, organizado e orientado a resultados. Foco em qualidade, consistência e governança da informação. Atualmente construo um pipeline <span class="hl">end-to-end em Snowflake + dbt</span>, orquestrado via CI/CD, buscando oportunidades em Engenharia de Dados e Analytics Engineering.
+        </p>
+        <div class="values">
+          <div class="value r d3">
+            <div class="ico">✦</div>
+            <h4 data-i18n="v1-t">Dados</h4>
+            <p data-i18n="v1-p">Ingestão, modelagem dimensional e star schema</p>
+          </div>
+          <div class="value r d4">
+            <div class="ico">✧</div>
+            <h4 data-i18n="v2-t">Automação</h4>
+            <p data-i18n="v2-p">Pipelines Python · SAP · Outlook · 98% de ganho</p>
+          </div>
+          <div class="value r d5">
+            <div class="ico">◈</div>
+            <h4 data-i18n="v3-t">Qualidade</h4>
+            <p data-i18n="v3-p">dbt tests, observabilidade e lineage</p>
+          </div>
+          <div class="value r d6">
+            <div class="ico">❋</div>
+            <h4 data-i18n="v4-t">Estratégia</h4>
+            <p data-i18n="v4-p">Do dado bruto à decisão de negócio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow r">02 · <span data-i18n="k-work">Trajetória</span></div>
+    <h2 class="r d1" style="font-size:clamp(2.4rem,6vw,4.4rem)" data-i18n="work-h">Onde eu <span class="italic">construí</span>.</h2>
+    <div class="exp-wrap">
+
+      <div class="exp-row r d2">
+        <div class="exp-when">
+          Sep 2025 — <span data-i18n="now">Presente</span><br>
+          <small style="color:var(--muted)">Sorocaba · SP</small>
+        </div>
+        <div class="exp-body">
+          <h3>Metso</h3>
+          <div class="where" data-i18n="role-metso">Estagiária · Análise de Dados em Compras</div>
+          <ul>
+            <li data-i18n="m1">Dashboards de Business Intelligence em Power BI para Purchase Orders e indicadores de compras, com cartões de KPI e medidas em DAX.</li>
+            <li data-i18n="m2">Pipelines end-to-end em Python integrados a SAP e Outlook — com validação e monitoramento embutidos. O pipeline de notas fiscais reduziu em 98% o tempo e o custo do processo (105 min → 2 min).</li>
+            <li data-i18n="m3">Pipeline agendado em SAP que gera diariamente a carteira de pedidos em aberto, garantindo disponibilidade e confiabilidade dos dados para análise downstream.</li>
+          </ul>
+        </div>
+        <div class="exp-stat">98%<small>time cut</small></div>
+      </div>
+
+      <div class="exp-row r d3">
+        <div class="exp-when">
+          Sep 2023 — Aug 2024<br>
+          <small style="color:var(--muted)">FACENS · PIBIT</small>
+        </div>
+        <div class="exp-body">
+          <h3>Liquid Galaxy</h3>
+          <div class="where" data-i18n="role-lg">Pesquisadora PIBIT · Google Summer of Code (RUXAILAB)</div>
+          <ul>
+            <li data-i18n="lg1">Pesquisa em arquitetura de software para sistemas médicos com avaliação heurística — vinculada ao Google Summer of Code.</li>
+            <li data-i18n="lg2">Vue.js, Firebase, Python, JavaScript e Figma — organização de dados, documentação técnica e comunicação científica.</li>
+          </ul>
+        </div>
+        <div class="exp-stat">GSoC<small>research</small></div>
+      </div>
+
+      <div class="exp-row r d4">
+        <div class="exp-when">
+          Fev 2023 — Aug 2025<br>
+          <small style="color:var(--muted)" data-i18n="volunteer">Voluntariado</small>
+        </div>
+        <div class="exp-body">
+          <h3>Falcons Aerodesign</h3>
+          <div class="where" data-i18n="role-falcons">Equipe de Competição · Estabilidade & Marketing</div>
+          <ul>
+            <li data-i18n="fa1">Desenvolvimento de aeronaves para competição nas áreas de estabilidade & controle e marketing técnico.</li>
+            <li data-i18n="fa2">Contribuí na hélice contra-rotativa premiada com Menção Honrosa pela APVE — trabalho em equipe multidisciplinar, planejamento, prazos e comunicação técnica.</li>
+          </ul>
+        </div>
+        <div class="exp-stat">APVE<small>honorable mention</small></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== PROJECTS -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <div class="eyebrow r">03 · <span data-i18n="k-proj">Projetos selecionados</span></div>
+    <h2 class="r d1" style="font-size:clamp(2.4rem,6vw,4.4rem)" data-i18n="proj-h">O que eu <span class="ital">entrego</span>.</h2>
+    <div class="proj-grid">
+
+      <article class="proj hero-card r d2">
+        <span class="featured" data-i18n="featured">Destaque</span>
+        <div class="proj-num">PROJECT · 001</div>
+        <h3>F1 Analytics <em>Engineering</em></h3>
+        <p data-i18n="p1">Produto de dados end-to-end em Snowflake: ingestão em Python (CSV + API REST), dbt com camadas staging/marts em star schema e visualização em Power BI. Qualidade garantida com dbt tests + source freshness; observabilidade, lineage e metadados via dbt docs. Orquestração e CI/CD com GitHub Actions.</p>
+        <div class="proj-metric">
+          <div>end-to-end<small data-i18n="met1">arquitetura</small></div>
+          <div>★★★<small data-i18n="met2">qualidade</small></div>
+          <div>CI/CD<small>automation</small></div>
+        </div>
+        <div class="proj-tags">
+          <span>Snowflake</span><span>dbt</span><span>Python</span><span>Power BI</span><span>GitHub Actions</span><span>Star Schema</span>
+        </div>
+      </article>
+
+      <article class="proj r d3">
+        <div class="proj-num">PROJECT · 002</div>
+        <h3 data-i18n="p2-h">Automação de <em>Notas Fiscais</em></h3>
+        <p data-i18n="p2">Pipeline em Python distribuído entre múltiplos usuários para processamento de invoices — de 105 min para 2 min por execução. 98% de redução de tempo e custo, com 100% do tempo do analista liberado para análise estratégica.</p>
+        <div class="proj-tags">
+          <span>Python</span><span>pandas</span><span>win32com</span><span>Outlook</span><span>SAP</span>
+        </div>
+      </article>
+
+      <article class="proj r d4">
+        <div class="proj-num">PROJECT · 003</div>
+        <h3 data-i18n="p3-h">Integração <em>SAP</em></h3>
+        <p data-i18n="p3">Automação em Python agendada e integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto, disponibilizando a base atualizada de forma automática para toda a análise downstream.</p>
+        <div class="proj-tags">
+          <span>SAP GUI</span><span>Python</span><span>Scheduling</span><span>Monitoring</span>
+        </div>
+      </article>
+
+      <article class="proj r d5">
+        <div class="proj-num">PROJECT · 004</div>
+        <h3>Liquid <em>Galaxy</em></h3>
+        <p data-i18n="p4">Pesquisa PIBIT · Google Summer of Code em arquitetura de software para sistemas médicos. Desenvolvimento com Vue.js, Firebase e Python, com foco em avaliação heurística, organização de dados e comunicação científica.</p>
+        <div class="proj-tags">
+          <span>Vue.js</span><span>Firebase</span><span>Python</span><span>Research</span><span>GSoC</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== SKILLS -->
+<section class="skills" id="skills">
+  <div class="wrap">
+    <div class="eyebrow r">04 · <span data-i18n="k-skills">Stack técnico</span></div>
+    <div class="skills-head">
+      <h2 class="r d1" data-i18n="skills-h">Ferramentas que <span class="italic">domino</span>.</h2>
+      <p class="r d2" data-i18n="skills-p">Do backend ao dashboard — do pipeline ao storytelling. Um stack construído para entregar produtos de dados confiáveis, escaláveis e com propósito.</p>
+    </div>
+    <div class="skill-grid">
+
+      <div class="skill-cat r d2">
+        <div class="num">01</div>
+        <h3 data-i18n="s1-h">Dados & BI</h3>
+        <div class="skill-chips">
+          <span>Power BI</span><span>DAX</span><span>Power Query / M</span><span>Star Schema</span><span>SQL</span><span>Excel avançado</span><span>Dashboards</span>
+        </div>
+      </div>
+
+      <div class="skill-cat r d3">
+        <div class="num">02</div>
+        <h3 data-i18n="s2-h">Engenharia de Dados</h3>
+        <div class="skill-chips">
+          <span>dbt</span><span>Snowflake</span><span>Pipelines</span><span>Data Quality</span><span>Lineage</span><span>Observability</span><span>DataOps</span>
+        </div>
+      </div>
+
+      <div class="skill-cat r d4">
+        <div class="num">03</div>
+        <h3 data-i18n="s3-h">Linguagens</h3>
+        <div class="skill-chips">
+          <span>Python</span><span>pandas</span><span>NumPy</span><span>scikit-learn</span><span>XGBoost</span><span>Selenium</span><span>JavaScript</span><span>TypeScript</span><span>C</span><span>C#</span><span>Java</span>
+        </div>
+      </div>
+
+      <div class="skill-cat r d2">
+        <div class="num">04</div>
+        <h3 data-i18n="s4-h">Automação</h3>
+        <div class="skill-chips">
+          <span>SAP GUI · Python</span><span>Office Scripts</span><span>Power Automate</span><span>win32com</span><span>requests</span>
+        </div>
+      </div>
+
+      <div class="skill-cat r d3">
+        <div class="num">05</div>
+        <h3 data-i18n="s5-h">DevOps & QA</h3>
+        <div class="skill-chips">
+          <span>Git / GitHub</span><span>CI/CD</span><span>Maven</span><span>JUnit</span><span>JaCoCo</span><span>Jira</span><span>SCRUM</span>
+        </div>
+      </div>
+
+      <div class="skill-cat r d4">
+        <div class="num">06</div>
+        <h3 data-i18n="s6-h">Web & Protótipo</h3>
+        <div class="skill-chips">
+          <span>HTML</span><span>CSS</span><span>Vue.js</span><span>React</span><span>Firebase</span><span>Figma</span><span>Canva</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== EDUCATION + LANG -->
+<section class="edu" id="edu">
+  <div class="wrap">
+    <div class="eyebrow r">05 · <span data-i18n="k-edu">Formação & idiomas</span></div>
+    <h2 class="r d1" data-i18n="edu-h">Base, <span class="italic">línguas</span> e cultura.</h2>
+    <div class="edu-grid">
+      <div class="edu-list">
+
+        <div class="edu-item r d2">
+          <div class="tag">Jan 2023 — Dez 2027</div>
+          <h4 data-i18n="edu1-t">FACENS — Engenharia da Computação</h4>
+          <div class="inst" data-i18n="edu1-i">em andamento · 8º semestre</div>
+          <div class="desc" data-i18n="edu1-d">Banco de Dados & SQL, Engenharia de Software, Reconhecimento de Padrões, DevOps & QA, Arquitetura de Computadores</div>
+        </div>
+
+        <div class="edu-item r d3">
+          <div class="tag">Mar 2025</div>
+          <h4>Bayswater Education — Liverpool 🇬🇧</h4>
+          <div class="inst" data-i18n="edu2-i">Programa internacional</div>
+          <div class="desc" data-i18n="edu2-d">Selo de Empregabilidade (workshop de carreiras) + Selo de Voluntariado (comunicação e trabalho em grupo).</div>
+        </div>
+
+        <div class="edu-item r d4">
+          <div class="tag">2020 — 2022</div>
+          <h4 data-i18n="edu3-t">Colégio Objetivo Sorocaba</h4>
+          <div class="inst" data-i18n="edu3-i">Ensino Médio</div>
+          <div class="desc" data-i18n="edu3-d">Base sólida em exatas, com destaque em matemática e lógica.</div>
+        </div>
+
+      </div>
+
+      <aside class="lang-panel r d3">
+        <h3 data-i18n="lang-h">Idiomas</h3>
+        <div class="lang-row">
+          <div class="lang-head">
+            <b data-i18n="l-pt">Português</b>
+            <span data-i18n="l-native">Nativo</span>
+          </div>
+          <div class="lang-bar"><i style="--w:100%"></i></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-head">
+            <b data-i18n="l-en">Inglês</b>
+            <span>C1 · Advanced</span>
+          </div>
+          <div class="lang-bar"><i style="--w:88%"></i></div>
+        </div>
+        <div class="lang-row">
+          <div class="lang-head">
+            <b data-i18n="l-de">Alemão</b>
+            <span>A1 · <span data-i18n="l-basic">Básico</span></span>
+          </div>
+          <div class="lang-bar"><i style="--w:25%"></i></div>
+        </div>
+        <div style="margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--serif);font-style:italic;color:var(--teal);font-size:.95rem">
+          <span data-i18n="lang-foot">Certificação de inglês avançado em Liverpool, 2025.</span>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== CONTACT -->
+<section class="contact" id="contact">
+  <div class="circle-bg"></div>
+  <div class="wrap">
+    <div class="eyebrow r">06 · <span data-i18n="k-contact">Contato</span></div>
+    <h2 class="r d1" data-i18n="contact-h">Vamos construir algo<br><em>orientado a dados</em>?</h2>
+    <p class="contact-lead r d2" data-i18n="contact-p">
+      Aberta a oportunidades em Análise de Dados, Business Intelligence, Analytics Engineering e Engenharia de Dados — na sua empresa, no seu time, no seu próximo produto de dados.
+    </p>
+    <a class="contact-cta r d3" href="mailto:fernanda.t.casali@gmail.com">
+      fernanda.t.casali@gmail.com
+      <span class="arr">→</span>
+    </a>
+    <div class="contact-list">
+      <a class="r d4" href="tel:+5515991011093">
+        <span>↳</span> (15) 99101-1093
+      </a>
+      <a class="r d5" href="https://www.linkedin.com/in/fernanda-casali/" target="_blank" rel="noopener">
+        <span>↳</span> LinkedIn
+      </a>
+      <a class="r d6" href="https://github.com/FernandaCasali" target="_blank" rel="noopener">
+        <span>↳</span> GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Fernanda Theodoro Casali</div>
+  <div class="sig" data-i18n="sig">Sorocaba · SP · Brasil</div>
+  <div><span data-i18n="made">Feito com dados</span> ✦ <span data-i18n="care">& carinho</span></div>
+</footer>
+
+<script>
+(function(){
+  /* ===== CUSTOM CURSOR ===== */
+  const cur=document.getElementById('cursor');
+  const dot=document.getElementById('cursorDot');
+  let cx=0,cy=0,tx=0,ty=0;
+  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;dot.style.left=tx+'px';dot.style.top=ty+'px';});
+  function loop(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);}loop();
+  document.querySelectorAll('a,button,.proj,.exp-row,.value,.skill-cat').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
+  });
+
+  /* ===== NAV / PROGRESS ===== */
+  const nav=document.getElementById('nav');
+  const progress=document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',scrollY>60);
+    const h=document.documentElement.scrollHeight-innerHeight;
+    progress.style.width=(scrollY/h*100)+'%';
+  },{passive:true});
+
+  /* ===== REVEAL ===== */
+  const revealEls=document.querySelectorAll('.r, .split');
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  revealEls.forEach(el=>io.observe(el));
+
+  /* ===== SIDE INDEX ===== */
+  const sideLinks=document.querySelectorAll('.side-index a');
+  const sects=['top','about','work','projects','skills','edu','contact'].map(id=>document.getElementById(id));
+  const io2=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        sideLinks.forEach(l=>l.classList.toggle('on',l.dataset.s===id));
+      }
+    });
+  },{threshold:.4});
+  sects.forEach(s=>s && io2.observe(s));
+
+  /* ===== PROJECT MOUSE SPOT ===== */
+  document.querySelectorAll('.proj').forEach(p=>{
+    p.addEventListener('mousemove',e=>{
+      const r=p.getBoundingClientRect();
+      p.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      p.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+
+  /* ===== PARALLAX BLOBS ===== */
+  const blobs=document.querySelectorAll('.hero-bg .blob');
+  window.addEventListener('mousemove',e=>{
+    const dx=(e.clientX/innerWidth-.5);
+    const dy=(e.clientY/innerHeight-.5);
+    blobs.forEach((b,i)=>{
+      const amp=(i+1)*18;
+      b.style.transform=`translate(${dx*amp}px,${dy*amp}px)`;
+    });
+  });
+
+  /* ===== i18n ===== */
+  const TXT={
+    pt:{
+      n1:'Sobre',n2:'Trajetória',n3:'Projetos',n4:'Stack',n5:'Contato',
+      hello:'Olá, prazer —',avail:'Disponível para novas oportunidades',
+      'h-turn':'transformo','h-data':'dados','h-in':'em','h-decision':'decisão',
+      'hero-lead':'Engenheira da Computação <span class="mono">8º semestre</span> construindo produtos de dados end-to-end — da ingestão em Python até o dashboard em Power BI. Atualmente na <b style="color:var(--teal);font-weight:500;font-style:italic">Metso</b>, onde automatizei processos que recuperaram <b style="color:var(--teal);font-weight:500">100% do tempo</b> do analista.',
+      cta1:'Vamos conversar',cta2:'Ver projetos',scroll:'Role para explorar',
+      'k-about':'Sobre mim','about-h':'Dados que viram <span class="italic">estratégia</span>.',
+      'about-1':'Estudante de <span class="hl">Engenharia da Computação</span> na FACENS, 8º semestre, atuando como estagiária de Análise de Dados em Compras na Metso. Construo produtos de dados e KPIs reutilizáveis ao longo de todo o ciclo — ingestão, transformação, entrega e monitoramento.',
+      'about-2':'Perfil analítico, organizado e orientado a resultados. Foco em qualidade, consistência e governança da informação. Atualmente construo um pipeline <span class="hl">end-to-end em Snowflake + dbt</span>, orquestrado via CI/CD, buscando oportunidades em Engenharia de Dados e Analytics Engineering.',
+      'v1-t':'Dados','v1-p':'Ingestão, modelagem dimensional e star schema',
+      'v2-t':'Automação','v2-p':'Pipelines Python · SAP · Outlook · 98% de ganho',
+      'v3-t':'Qualidade','v3-p':'dbt tests, observabilidade e lineage',
+      'v4-t':'Estratégia','v4-p':'Do dado bruto à decisão de negócio',
+      'k-work':'Trajetória','work-h':'Onde eu <span class="italic">construí</span>.',now:'Presente',
+      'role-metso':'Estagiária · Análise de Dados em Compras',
+      m1:'Dashboards de Business Intelligence em Power BI para Purchase Orders e indicadores de compras, com cartões de KPI e medidas em DAX.',
+      m2:'Pipelines end-to-end em Python integrados a SAP e Outlook — com validação e monitoramento embutidos. O pipeline de notas fiscais reduziu em 98% o tempo e o custo do processo (105 min → 2 min).',
+      m3:'Pipeline agendado em SAP que gera diariamente a carteira de pedidos em aberto, garantindo disponibilidade e confiabilidade dos dados para análise downstream.',
+      'role-lg':'Pesquisadora PIBIT · Google Summer of Code (RUXAILAB)',
+      lg1:'Pesquisa em arquitetura de software para sistemas médicos com avaliação heurística — vinculada ao Google Summer of Code.',
+      lg2:'Vue.js, Firebase, Python, JavaScript e Figma — organização de dados, documentação técnica e comunicação científica.',
+      volunteer:'Voluntariado','role-falcons':'Equipe de Competição · Estabilidade & Marketing',
+      fa1:'Desenvolvimento de aeronaves para competição nas áreas de estabilidade & controle e marketing técnico.',
+      fa2:'Contribuí na hélice contra-rotativa premiada com Menção Honrosa pela APVE — trabalho em equipe multidisciplinar, planejamento, prazos e comunicação técnica.',
+      'k-proj':'Projetos selecionados','proj-h':'O que eu <span class="ital">entrego</span>.',featured:'Destaque',
+      p1:'Produto de dados end-to-end em Snowflake: ingestão em Python (CSV + API REST), dbt com camadas staging/marts em star schema e visualização em Power BI. Qualidade garantida com dbt tests + source freshness; observabilidade, lineage e metadados via dbt docs. Orquestração e CI/CD com GitHub Actions.',
+      met1:'arquitetura',met2:'qualidade',
+      'p2-h':'Automação de <em>Notas Fiscais</em>',
+      p2:'Pipeline em Python distribuído entre múltiplos usuários para processamento de invoices — de 105 min para 2 min por execução. 98% de redução de tempo e custo, com 100% do tempo do analista liberado para análise estratégica.',
+      'p3-h':'Integração <em>SAP</em>',
+      p3:'Automação em Python agendada e integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto, disponibilizando a base atualizada de forma automática para toda a análise downstream.',
+      p4:'Pesquisa PIBIT · Google Summer of Code em arquitetura de software para sistemas médicos. Desenvolvimento com Vue.js, Firebase e Python, com foco em avaliação heurística, organização de dados e comunicação científica.',
+      'k-skills':'Stack técnico','skills-h':'Ferramentas que <span class="italic">domino</span>.',
+      'skills-p':'Do backend ao dashboard — do pipeline ao storytelling. Um stack construído para entregar produtos de dados confiáveis, escaláveis e com propósito.',
+      's1-h':'Dados & BI','s2-h':'Engenharia de Dados','s3-h':'Linguagens','s4-h':'Automação','s5-h':'DevOps & QA','s6-h':'Web & Protótipo',
+      'k-edu':'Formação & idiomas','edu-h':'Base, <span class="italic">línguas</span> e cultura.',
+      'edu1-t':'FACENS — Engenharia da Computação','edu1-i':'em andamento · 8º semestre',
+      'edu1-d':'Banco de Dados & SQL, Engenharia de Software, Reconhecimento de Padrões, DevOps & QA, Arquitetura de Computadores',
+      'edu2-i':'Programa internacional','edu2-d':'Selo de Empregabilidade (workshop de carreiras) + Selo de Voluntariado (comunicação e trabalho em grupo).',
+      'edu3-t':'Colégio Objetivo Sorocaba','edu3-i':'Ensino Médio','edu3-d':'Base sólida em exatas, com destaque em matemática e lógica.',
+      'lang-h':'Idiomas','l-pt':'Português','l-native':'Nativo','l-en':'Inglês','l-de':'Alemão','l-basic':'Básico',
+      'lang-foot':'Certificação de inglês avançado em Liverpool, 2025.',
+      'k-contact':'Contato','contact-h':'Vamos construir algo<br><em>orientado a dados</em>?',
+      'contact-p':'Aberta a oportunidades em Análise de Dados, Business Intelligence, Analytics Engineering e Engenharia de Dados — na sua empresa, no seu time, no seu próximo produto de dados.',
+      sig:'Sorocaba · SP · Brasil',made:'Feito com dados',care:'& carinho'
+    },
+    en:{
+      n1:'About',n2:'Journey',n3:'Projects',n4:'Stack',n5:'Contact',
+      hello:'Hello, nice to meet you —',avail:'Open to new opportunities',
+      'h-turn':'turning','h-data':'data','h-in':'into','h-decision':'decisions',
+      'hero-lead':'Computer Engineering <span class="mono">8th semester</span> student building end-to-end data products — from Python ingestion to Power BI dashboards. Currently at <b style="color:var(--teal);font-weight:500;font-style:italic">Metso</b>, where I automated processes that gave back <b style="color:var(--teal);font-weight:500">100% of the analyst time</b>.',
+      cta1:'Let’s talk',cta2:'See projects',scroll:'Scroll to explore',
+      'k-about':'About me','about-h':'Data that becomes <span class="italic">strategy</span>.',
+      'about-1':'<span class="hl">Computer Engineering</span> student at FACENS, 8th semester, working as a Procurement Data Analyst intern at Metso. I build reusable data products and KPIs across the full cycle — ingestion, transformation, delivery and monitoring.',
+      'about-2':'Analytical, organized and results-oriented. Focused on data quality, consistency and governance. Currently building an <span class="hl">end-to-end Snowflake + dbt</span> pipeline, orchestrated via CI/CD, pursuing opportunities in Data Engineering and Analytics Engineering.',
+      'v1-t':'Data','v1-p':'Ingestion, dimensional modeling, star schema',
+      'v2-t':'Automation','v2-p':'Python · SAP · Outlook pipelines · 98% gain',
+      'v3-t':'Quality','v3-p':'dbt tests, observability, lineage',
+      'v4-t':'Strategy','v4-p':'From raw data to business decisions',
+      'k-work':'Journey','work-h':'Where I <span class="italic">built</span>.',now:'Present',
+      'role-metso':'Procurement Data Analyst Intern',
+      m1:'Business Intelligence dashboards in Power BI for Purchase Orders and procurement KPIs — DAX measures and KPI cards.',
+      m2:'End-to-end Python pipelines integrated with SAP and Outlook — with built-in validation and monitoring. The invoice pipeline cut processing time by 98% (105 min → 2 min).',
+      m3:'Scheduled SAP pipeline that generates the daily open-orders report, ensuring data availability and reliability for downstream analysis.',
+      'role-lg':'PIBIT Researcher · Google Summer of Code (RUXAILAB)',
+      lg1:'Software architecture research for medical systems with heuristic evaluation — tied to Google Summer of Code.',
+      lg2:'Vue.js, Firebase, Python, JavaScript and Figma — data organization, technical documentation and scientific communication.',
+      volunteer:'Volunteer','role-falcons':'Competition Team · Stability & Marketing',
+      fa1:'Competition aircraft development — stability & control and technical marketing.',
+      fa2:'Contributed to the counter-rotating propeller awarded an Honorable Mention by APVE — multidisciplinary teamwork, planning, deadlines and technical communication.',
+      'k-proj':'Selected projects','proj-h':'What I <span class="ital">ship</span>.',featured:'Featured',
+      p1:'End-to-end data product on Snowflake: Python ingestion (CSV + REST API), dbt staging/marts in star schema and Power BI. Quality via dbt tests + source freshness; observability, lineage and metadata via dbt docs. Orchestration and CI/CD with GitHub Actions.',
+      met1:'architecture',met2:'quality',
+      'p2-h':'Invoice <em>Automation</em>',
+      p2:'Python pipeline distributed across multiple users for invoice processing — from 105 min to 2 min per run. 98% time and cost reduction, freeing 100% of the analyst time for strategic work.',
+      'p3-h':'SAP <em>Integration</em>',
+      p3:'Scheduled Python automation integrated with SAP GUI that generates the daily open-orders report, automatically providing an up-to-date dataset for all downstream analytics.',
+      p4:'PIBIT · Google Summer of Code research on software architecture for medical systems. Built with Vue.js, Firebase and Python — focused on heuristic evaluation, data organization and scientific communication.',
+      'k-skills':'Technical stack','skills-h':'Tools I <span class="italic">master</span>.',
+      'skills-p':'From backend to dashboard — from pipeline to storytelling. A stack built to deliver reliable, scalable, purposeful data products.',
+      's1-h':'Data & BI','s2-h':'Data Engineering','s3-h':'Languages','s4-h':'Automation','s5-h':'DevOps & QA','s6-h':'Web & Prototyping',
+      'k-edu':'Education & languages','edu-h':'Foundations, <span class="italic">languages</span>, culture.',
+      'edu1-t':'FACENS — Computer Engineering','edu1-i':'in progress · 8th semester',
+      'edu1-d':'Databases & SQL, Software Engineering, Pattern Recognition, DevOps & QA, Computer Architecture',
+      'edu2-i':'International program','edu2-d':'Employability Seal (careers workshop) + Volunteering Seal (communication and group work).',
+      'edu3-t':'Colégio Objetivo Sorocaba','edu3-i':'High School','edu3-d':'Strong foundation in math and logic.',
+      'lang-h':'Languages','l-pt':'Portuguese','l-native':'Native','l-en':'English','l-de':'German','l-basic':'Basic',
+      'lang-foot':'Advanced English certification in Liverpool, 2025.',
+      'k-contact':'Contact','contact-h':'Let’s build something<br><em>data-driven</em>?',
+      'contact-p':'Open to opportunities in Data Analysis, Business Intelligence, Analytics Engineering and Data Engineering — at your company, on your team, on your next data product.',
+      sig:'Sorocaba · SP · Brazil',made:'Made with data',care:'& care'
+    }
+  };
+  const btns=document.querySelectorAll('.lang-switch button');
+  function applyLang(l){
+    document.documentElement.lang = l==='pt'?'pt-BR':'en';
+    document.documentElement.dataset.lang=l;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k=el.getAttribute('data-i18n');
+      if(TXT[l][k]!==undefined) el.innerHTML=TXT[l][k];
+    });
+    btns.forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+})();
+</script>
+</body>
+</html>
