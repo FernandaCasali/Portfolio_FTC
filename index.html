@@ -71,7 +71,7 @@ body::before{
 }
 .nav.scrolled{padding:14px clamp(24px,5vw,56px);background:rgba(251,245,235,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .brand{font-family:var(--serif);font-weight:500;font-size:1.25rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2.6s ease-in-out infinite}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--metal);animation:pulse 2.6s ease-in-out infinite;box-shadow:0 0 0 4px rgba(122,136,136,.18)}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.5}}
 .nav-right{display:flex;align-items:center;gap:28px}
 .nav-links{display:none;gap:28px;font-size:.84rem;font-weight:500;letter-spacing:.02em}
@@ -100,6 +100,14 @@ section{position:relative;padding:140px clamp(24px,5vw,56px);z-index:2}
   margin-bottom:28px;
 }
 .eyebrow::before{content:"";width:36px;height:1px;background:var(--teal)}
+.about .eyebrow,.about .eyebrow::before{color:var(--metal);background:var(--metal)}
+.about .eyebrow{color:var(--metal)}
+.skills .eyebrow,.skills .eyebrow::before{color:var(--metal)}
+.skills .eyebrow::before{background:var(--metal)}
+#work .eyebrow,#work .eyebrow::before{color:var(--sage)}
+#work .eyebrow::before{background:var(--sage)}
+.edu .eyebrow,.edu .eyebrow::before{color:var(--teal-ink)}
+.edu .eyebrow::before{background:var(--teal-ink)}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.05;color:var(--ink)}
 .italic{font-style:italic;font-weight:300;color:var(--teal)}
 
@@ -140,8 +148,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
 .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
 .hero-greeting{font-family:var(--mono);font-size:.82rem;color:var(--teal);letter-spacing:.12em;display:flex;align-items:center;gap:14px}
 .hero-greeting::before{content:"";width:40px;height:1px;background:var(--teal)}
-.hero-loc{font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-align:right}
-.hero-loc b{display:block;color:var(--teal-ink);font-weight:500;margin-bottom:4px;font-family:var(--serif);font-style:italic;font-size:1rem}
+.hero-loc{font-family:var(--mono);font-size:.75rem;color:var(--metal);letter-spacing:.1em;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.hero-loc b{color:var(--teal-ink);font-weight:500;font-family:var(--serif);font-style:italic;font-size:1.05rem}
+.hero-loc span::before{content:"●";color:var(--sage);margin-right:6px;animation:pulse 2s ease-in-out infinite;display:inline-block}
 
 .hero h1{
   font-size:clamp(3.6rem,13vw,10rem);
@@ -149,7 +158,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
   line-height:.9;
   letter-spacing:-.045em;
 }
-.hero h1 .amp{font-style:italic;color:var(--lilac);font-weight:300}
+.hero h1 .amp{font-style:italic;color:var(--metal);font-weight:300}
 .hero h1 .accent{position:relative;display:inline-block}
 .hero h1 .accent svg{position:absolute;left:-6%;bottom:-6%;width:112%;height:auto;z-index:-1;color:var(--butter)}
 .hero h1 em{font-style:italic;font-weight:300;color:var(--teal)}
@@ -169,13 +178,14 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
   transition:transform .4s var(--ease),box-shadow .4s var(--ease);
 }
 .btn:hover{transform:translateY(-3px);box-shadow:0 18px 38px -14px rgba(67,109,109,.5)}
-.btn.ghost{background:transparent;color:var(--teal-ink)}
+.btn.ghost{background:transparent;color:var(--metal);border-color:var(--metal)}
+.btn.ghost:hover{background:var(--metal);color:var(--cream)}
 .btn .arr{display:inline-block;transition:transform .4s var(--ease)}
 .btn:hover .arr{transform:translateX(5px)}
 
 .scroll-tip{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.18em;margin-top:50px}
 .scroll-tip .line{width:48px;height:1px;background:var(--muted);position:relative;overflow:hidden}
-.scroll-tip .line::after{content:"";position:absolute;left:-20px;top:0;width:20px;height:100%;background:var(--teal);animation:slide 2.2s ease-in-out infinite}
+.scroll-tip .line::after{content:"";position:absolute;left:-20px;top:0;width:20px;height:100%;background:var(--metal);animation:slide 2.2s ease-in-out infinite}
 @keyframes slide{0%{left:-20px}100%{left:48px}}
 
 /* ============================================================
@@ -282,7 +292,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
 /* ============================================================
    PROJECTS
    ============================================================ */
-.projects{background:var(--teal-ink);color:var(--cream);overflow:hidden}
+.projects{background:linear-gradient(165deg,var(--teal-ink) 0%,#3a3e3e 55%,var(--metal) 100%);color:var(--cream);overflow:hidden;position:relative}
+.projects::before{content:"";position:absolute;top:-150px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(122,136,136,.35),transparent 60%);z-index:0}
+.projects .wrap{position:relative;z-index:1}
 .projects h2,.projects .eyebrow,.projects .eyebrow::before{color:var(--peach)}
 .projects .eyebrow::before{background:var(--peach)}
 .projects h2{color:var(--cream)}
@@ -309,7 +321,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
 .proj p{color:#dcd1b8;font-size:.95rem;line-height:1.6;margin-bottom:22px;max-width:48ch}
 .proj-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
 .proj-tags span{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--peach);padding:5px 11px;border:1px solid rgba(255,217,179,.3);border-radius:999px}
-.proj.hero-card{grid-column:1/-1;background:linear-gradient(135deg,rgba(180,142,173,.14),rgba(242,227,148,.08))}
+.proj.hero-card{grid-column:1/-1;background:linear-gradient(135deg,rgba(122,136,136,.22) 0%,rgba(179,127,87,.12) 50%,rgba(149,147,103,.1) 100%)}
 .proj.hero-card h3{font-size:clamp(2.2rem,4.5vw,3.4rem)}
 .featured{position:absolute;top:28px;right:28px;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--teal);background:var(--butter);padding:6px 12px;border-radius:999px;text-transform:uppercase;z-index:2}
 .proj-metric{display:flex;gap:30px;margin-top:20px;flex-wrap:wrap}
@@ -383,7 +395,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
    CONTACT
    ============================================================ */
 .contact{background:var(--teal);color:var(--cream);text-align:center;padding:160px clamp(24px,5vw,56px) 60px;overflow:hidden;position:relative}
-.contact .circle-bg{position:absolute;inset:auto;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(180,142,173,.3),transparent 60%);top:-200px;left:50%;transform:translateX(-50%);z-index:0}
+.contact .circle-bg{position:absolute;inset:auto;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(122,136,136,.42),rgba(179,127,87,.18) 45%,transparent 70%);top:-200px;left:50%;transform:translateX(-50%);z-index:0}
+.contact::before{content:"";position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(149,147,103,.3),transparent 60%);z-index:0}
+.contact::after{content:"";position:absolute;top:30%;right:-150px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(122,136,136,.35),transparent 60%);z-index:0}
 .contact>*{position:relative;z-index:1}
 .contact .eyebrow{color:var(--peach);justify-content:center}
 .contact .eyebrow::before{background:var(--peach)}
@@ -411,7 +425,7 @@ footer .sig{color:var(--peach)}
   padding:4px 0;transition:color .3s;
 }
 .side-index a .line{width:30px;height:1px;background:currentColor;transition:width .4s var(--ease)}
-.side-index a:hover,.side-index a.on{color:var(--teal)}
+.side-index a:hover,.side-index a.on{color:var(--metal)}
 .side-index a.on .line{width:48px}
 .projects ~ .side-index,.contact ~ .side-index{color:var(--peach)}
 
@@ -651,9 +665,9 @@ footer .sig{color:var(--peach)}
     <h2 class="r d1" style="font-size:clamp(2.4rem,6vw,4.4rem)" data-i18n="proj-h">O que eu <span class="ital">entrego</span>.</h2>
     <div class="proj-grid">
 
-      <article class="proj hero-card r d2">
+      <a href="https://github.com/FernandaCasali/Formula1-Pipeline" target="_blank" rel="noopener" class="proj hero-card r d2">
         <span class="featured" data-i18n="featured">Destaque</span>
-        <div class="proj-num">PROJECT · 001</div>
+        <div class="proj-num">PROJECT · 001 · <span style="color:var(--metal)">github ↗</span></div>
         <h3>F1 Analytics <em>Engineering</em></h3>
         <p data-i18n="p1">Produto de dados end-to-end em Snowflake: ingestão em Python (CSV + API REST), dbt com camadas staging/marts em star schema e visualização em Power BI. Qualidade garantida com dbt tests + source freshness; observabilidade, lineage e metadados via dbt docs. Orquestração e CI/CD com GitHub Actions.</p>
         <div class="proj-metric">
@@ -664,34 +678,52 @@ footer .sig{color:var(--peach)}
         <div class="proj-tags">
           <span>Snowflake</span><span>dbt</span><span>Python</span><span>Power BI</span><span>GitHub Actions</span><span>Star Schema</span>
         </div>
-      </article>
+      </a>
 
-      <article class="proj r d3">
-        <div class="proj-num">PROJECT · 002</div>
+      <a href="https://github.com/FernandaCasali/ChatbotIADados" target="_blank" rel="noopener" class="proj r d3">
+        <div class="proj-num">PROJECT · 002 · <span style="color:var(--metal)">github ↗</span></div>
+        <h3>DataChat <em>AI</em></h3>
+        <p data-i18n="p-chat">Chatbot em português que transforma perguntas em linguagem natural em consultas SQL executadas sobre banco de vendas. Resultado entregue em tabela + gráfico. LLM Llama 3.3 70B via Groq, orquestrado por LangChain SQL Agent.</p>
+        <div class="proj-tags">
+          <span>Python</span><span>LangChain</span><span>Groq LLM</span><span>Streamlit</span><span>SQLite</span><span>NL → SQL</span>
+        </div>
+      </a>
+
+      <a class="proj r d4">
+        <div class="proj-num">PROJECT · 003</div>
         <h3 data-i18n="p2-h">Automação de <em>Notas Fiscais</em></h3>
         <p data-i18n="p2">Pipeline em Python distribuído entre múltiplos usuários para processamento de invoices — de 105 min para 2 min por execução. 98% de redução de tempo e custo, com 100% do tempo do analista liberado para análise estratégica.</p>
         <div class="proj-tags">
           <span>Python</span><span>pandas</span><span>win32com</span><span>Outlook</span><span>SAP</span>
         </div>
-      </article>
+      </a>
 
-      <article class="proj r d4">
-        <div class="proj-num">PROJECT · 003</div>
+      <a class="proj r d5">
+        <div class="proj-num">PROJECT · 004</div>
         <h3 data-i18n="p3-h">Integração <em>SAP</em></h3>
         <p data-i18n="p3">Automação em Python agendada e integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto, disponibilizando a base atualizada de forma automática para toda a análise downstream.</p>
         <div class="proj-tags">
           <span>SAP GUI</span><span>Python</span><span>Scheduling</span><span>Monitoring</span>
         </div>
-      </article>
+      </a>
 
-      <article class="proj r d5">
-        <div class="proj-num">PROJECT · 004</div>
+      <a href="https://github.com/FernandaCasali/TabelaHash_Prontuarios" target="_blank" rel="noopener" class="proj r d4">
+        <div class="proj-num">PROJECT · 005 · <span style="color:var(--metal)">github ↗</span></div>
+        <h3>Hash <em>Table</em> · Prontuários</h3>
+        <p data-i18n="p-hash">Estrutura de dados em C para gestão de prontuários médicos usando tabela hash com tratamento de colisões. Projeto acadêmico que mostra fundamentos sólidos de algoritmos, complexidade e manipulação de memória.</p>
+        <div class="proj-tags">
+          <span>C</span><span>Hash Table</span><span>Data Structures</span><span>Algorithms</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/FernandaCasali/heuristicas" target="_blank" rel="noopener" class="proj r d5">
+        <div class="proj-num">PROJECT · 006 · <span style="color:var(--metal)">github ↗</span></div>
         <h3>Liquid <em>Galaxy</em></h3>
         <p data-i18n="p4">Pesquisa PIBIT · Google Summer of Code em arquitetura de software para sistemas médicos. Desenvolvimento com Vue.js, Firebase e Python, com foco em avaliação heurística, organização de dados e comunicação científica.</p>
         <div class="proj-tags">
           <span>Vue.js</span><span>Firebase</span><span>Python</span><span>Research</span><span>GSoC</span>
         </div>
-      </article>
+      </a>
 
     </div>
   </div>
@@ -951,6 +983,8 @@ footer .sig{color:var(--peach)}
       'p3-h':'Integração <em>SAP</em>',
       p3:'Automação em Python agendada e integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto, disponibilizando a base atualizada de forma automática para toda a análise downstream.',
       p4:'Pesquisa PIBIT · Google Summer of Code em arquitetura de software para sistemas médicos. Desenvolvimento com Vue.js, Firebase e Python, com foco em avaliação heurística, organização de dados e comunicação científica.',
+      'p-chat':'Chatbot em português que transforma perguntas em linguagem natural em consultas SQL executadas sobre banco de vendas. Resultado entregue em tabela + gráfico. LLM Llama 3.3 70B via Groq, orquestrado por LangChain SQL Agent.',
+      'p-hash':'Estrutura de dados em C para gestão de prontuários médicos usando tabela hash com tratamento de colisões. Projeto acadêmico que mostra fundamentos sólidos de algoritmos, complexidade e manipulação de memória.',
       'k-skills':'Stack técnico','skills-h':'Ferramentas que <span class="italic">domino</span>.',
       'skills-p':'Do backend ao dashboard — do pipeline ao storytelling. Um stack construído para entregar produtos de dados confiáveis, escaláveis e com propósito.',
       's1-h':'Dados & BI','s2-h':'Engenharia de Dados','s3-h':'Linguagens','s4-h':'Automação','s5-h':'DevOps & QA','s6-h':'Web & Protótipo',
@@ -997,6 +1031,8 @@ footer .sig{color:var(--peach)}
       'p3-h':'SAP <em>Integration</em>',
       p3:'Scheduled Python automation integrated with SAP GUI that generates the daily open-orders report, automatically providing an up-to-date dataset for all downstream analytics.',
       p4:'PIBIT · Google Summer of Code research on software architecture for medical systems. Built with Vue.js, Firebase and Python — focused on heuristic evaluation, data organization and scientific communication.',
+      'p-chat':'A Portuguese-language chatbot that turns natural language questions into SQL queries over a sales database — results shown as a table and chart. Llama 3.3 70B LLM via Groq, orchestrated by a LangChain SQL agent.',
+      'p-hash':'A C data structure for managing medical records using a hash table with collision handling. Academic project that showcases solid foundations in algorithms, complexity analysis and memory management.',
       'k-skills':'Technical stack','skills-h':'Tools I <span class="italic">master</span>.',
       'skills-p':'From backend to dashboard — from pipeline to storytelling. A stack built to deliver reliable, scalable, purposeful data products.',
       's1-h':'Data & BI','s2-h':'Data Engineering','s3-h':'Languages','s4-h':'Automation','s5-h':'DevOps & QA','s6-h':'Web & Prototyping',
