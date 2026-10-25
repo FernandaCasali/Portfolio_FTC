@@ -200,8 +200,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
   background:var(--cream-2);
   mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
 }
-.marquee-track{display:flex;gap:48px;animation:marq 36s linear infinite;width:max-content}
-.marquee span{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--teal-ink);display:inline-flex;align-items:center;gap:48px;white-space:nowrap}
+.marquee-track{display:flex;gap:36px;animation:marq 36s linear infinite;width:max-content}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--teal-ink);display:inline-flex;align-items:center;gap:36px;white-space:nowrap}
 .marquee span::after{content:"✦";color:var(--lilac);font-style:normal}
 .marquee span:nth-child(3n)::after{color:var(--sage)}
 .marquee span:nth-child(3n+1)::after{color:var(--teal)}
@@ -428,10 +428,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
 .lang-head b{font-family:var(--serif);font-weight:500;font-size:1.1rem}
 .lang-head span{font-family:var(--mono);font-size:.72rem;color:var(--teal);letter-spacing:.1em}
 .lang-bar{height:6px;background:rgba(63,8,0,.1);border-radius:999px;overflow:hidden}
-.lang-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal-ink),var(--teal) 35%,var(--lilac) 65%,var(--sage));border-radius:999px;transition:width 1.6s var(--ease) .2s}
-.lang-row:nth-child(1) .lang-bar i{background:linear-gradient(90deg,var(--teal-ink),var(--teal))}
-.lang-row:nth-child(2) .lang-bar i{background:linear-gradient(90deg,var(--teal),var(--lilac))}
-.lang-row:nth-child(3) .lang-bar i{background:linear-gradient(90deg,var(--sage),var(--metal))}
+.lang-bar i{display:block;height:100%;width:0;background:var(--sage);border-radius:999px;transition:width 1.6s var(--ease) .2s}
 .r.in .lang-bar i{width:var(--w)}
 
 /* ============================================================
@@ -464,13 +461,12 @@ footer .sig{color:var(--peach)}
 .side-index{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;gap:10px}
 @media(min-width:1100px){.side-index{display:flex} section{padding-right:clamp(90px,8vw,120px)}}
 .side-index a{
-  display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--muted);
+  display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--teal-ink);
   padding:4px 0;transition:color .3s;
 }
 .side-index a .line{width:30px;height:1px;background:currentColor;transition:width .4s var(--ease)}
-.side-index a:hover,.side-index a.on{color:var(--metal)}
-.side-index a.on .line{width:48px}
-.projects ~ .side-index,.contact ~ .side-index{color:var(--peach)}
+.side-index a:hover,.side-index a.on{color:var(--teal-ink)}
+.side-index a.on .line{width:48px;height:2px}
 
 /* ============================================================
    MOBILE
@@ -478,7 +474,7 @@ footer .sig{color:var(--peach)}
 @media(max-width:720px){
   section{padding:100px 24px}
   .hero{padding-top:140px}
-  .marquee span{font-size:1.2rem}
+  .marquee span{font-size:.88rem}
   .exp-stat{font-size:2.4rem;text-align:left}
   .portrait .initials{font-size:7rem}
   .portrait .badge{width:90px;height:90px}
@@ -539,7 +535,7 @@ footer .sig{color:var(--peach)}
       <div class="hero-greeting r"><span data-i18n="hello">Olá, prazer —</span></div>
       <div class="hero-loc r d1">
         <b>Sorocaba · SP</b>
-        <span data-i18n="avail">Disponível para novas oportunidades</span>
+        <!-- <span data-i18n="avail">Disponível para novas oportunidades</span> -->
       </div>
     </div>
 
@@ -913,9 +909,9 @@ footer .sig{color:var(--peach)}
       <span class="arr">→</span>
     </a>
     <div class="contact-list">
-      <a class="r d4" href="tel:+5515991011093">
+      <!-- <a class="r d4" href="tel:+5515991011093">
         <span>↳</span> (15) 99101-1093
-      </a>
+      </a> -->
       <a class="r d5" href="https://www.linkedin.com/in/fernanda-casali/" target="_blank" rel="noopener">
         <span>↳</span> LinkedIn
       </a>
