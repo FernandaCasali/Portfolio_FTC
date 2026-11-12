@@ -3,37 +3,99 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fernanda Casali — Data & Analytics Engineering</title>
-<meta name="description" content="Portfólio de Fernanda Theodoro Casali — Engenharia da Computação · Dados, Business Intelligence e Engenharia de Dados." />
+<title>Fernanda Casali — Automation · Data · BI</title>
+<meta name="description" content="Portfólio de Fernanda Theodoro Casali — Engenharia da Computação · Automação em Python, Business Intelligence em Power BI e produtos de dados." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..800,0..100,0..1;1,9..144,300..800,0..100,0..1&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
    PALETTE — Garden Dusk
    Olive · Soft Sage · Ashmead · Blue Dust · Chalk · Dusty Rose · Bean
    ============================================================ */
 :root{
-  --lilac:#DA8C80;      /* Dusty Rose — warm serif italics / rose accent */
-  --sage:#70744F;       /* Olive Green — deep nature green */
-  --peach:#E4D8C2;      /* Chalk — warm paper neutral */
-  --butter:#C0C5AF;     /* Soft Sage — pale green highlight */
-  --teal:#798581;       /* Ashmead Green — primary accent / buttons */
-  --teal-ink:#3F0800;   /* Bean — deep brown text */
-  --metal:#93AEBF;      /* Blue Dust — cool blue accent */
-  --cream:#EDE4CD;      /* warm paper */
-  --cream-2:#E4D8C2;    /* chalk surface */
-  --ink:#3F0800;        /* bean text */
-  --muted:#8A8D7A;      /* muted olive-gray */
-  --line:rgba(63,8,0,.16);
+  /* Palette — Icy (claro) · Pewter (escuro) — Fernanda T. Casali DS */
+  --paper:#eef2f6;
+  --paper-raised:#f7fbff;
+  --ink:#353d43;
+  --ink-muted:#5a6670;
+  --quartz:#486377;         /* assinatura · links */
+  --on-quartz:#f7fbff;
+  --sage:#a2c4a2;           /* Silver Dollar — tags, neon */
+  --thistle:#cec3d1;        /* Thistle Blush */
+  --icy:#f7fbff;
+  --pewter:#353d43;         /* bloco escuro */
+  --on-pewter:#f7fbff;
+  --on-pastel:#353d43;
+  --accent:#3d6b4c;         /* verde de ênfase */
+  --primary-from:#486377;
+  --primary-to:#353d43;
+  --on-primary:#f7fbff;
+  --neon:#8fd19a;
+  --hairline:#d9e0e7;
+  --border-strong:#7d8a94;
+  --line:#d9e0e7;
 
-  --serif:'Fraunces',serif;
-  --sans:'Inter',system-ui,-apple-system,sans-serif;
-  --mono:'DM Mono',ui-monospace,monospace;
+  /* Aliases legados para preservar o resto do CSS */
+  --cream:var(--paper);
+  --cream-2:var(--paper-raised);
+  --teal:var(--quartz);
+  --teal-ink:var(--ink);
+  --metal:var(--quartz);
+  --lilac:var(--accent);
+  --butter:var(--sage);
+  --peach:var(--thistle);
+  --muted:var(--ink-muted);
+
+  --serif:'Fraunces','Iowan Old Style',Georgia,serif;
+  --sans:'Space Grotesk','Segoe UI',system-ui,-apple-system,sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,monospace;
+
+  --gradient-brand:linear-gradient(135deg,#a2c4a2 0%,#cec3d1 52%,#486377 100%);
+  --gradient-mist:linear-gradient(120deg,#a2c4a2 0%,#cec3d1 100%);
+
+  --shadow-sm:0 1px 2px rgba(53,61,67,.06),0 2px 8px rgba(53,61,67,.06);
+  --shadow-md:0 2px 6px rgba(53,61,67,.05),0 14px 36px -10px rgba(72,99,119,.22);
+  --shadow-lg:0 4px 12px rgba(53,61,67,.06),0 30px 64px -18px rgba(72,99,119,.32);
+  --shadow-neon:0 0 0 1px rgba(143,209,154,.55),0 0 16px rgba(143,209,154,.45),0 0 40px rgba(143,209,154,.25);
 
   --ease:cubic-bezier(.22,1,.36,1);
   --ease-soft:cubic-bezier(.4,0,.2,1);
 }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1c2226;
+    --paper-raised:#262e34;
+    --ink:#f2f6fa;
+    --ink-muted:#b4bec6;
+    --quartz:#7d9cb3;
+    --on-quartz:#11161a;
+    --accent:#a2c4a2;
+    --primary-from:#a2c4a2;
+    --primary-to:#cec3d1;
+    --on-primary:#1c2226;
+    --pewter:#11161a;
+    --on-pewter:#f2f6fa;
+    --neon:#b9f5b4;
+    --hairline:#3a444b;
+    --line:#3a444b;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35),0 2px 8px rgba(0,0,0,.3);
+    --shadow-md:0 2px 6px rgba(0,0,0,.3),0 14px 36px -10px rgba(0,0,0,.6);
+    --shadow-lg:0 4px 12px rgba(0,0,0,.35),0 30px 64px -18px rgba(0,0,0,.75);
+    --shadow-neon:0 0 0 1px rgba(185,245,180,.6),0 0 18px rgba(185,245,180,.5),0 0 48px rgba(185,245,180,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1c2226;--paper-raised:#262e34;--ink:#f2f6fa;--ink-muted:#b4bec6;
+  --quartz:#7d9cb3;--on-quartz:#11161a;--accent:#a2c4a2;--primary-from:#a2c4a2;
+  --primary-to:#cec3d1;--on-primary:#1c2226;--pewter:#11161a;--on-pewter:#f2f6fa;
+  --neon:#b9f5b4;--hairline:#3a444b;--line:#3a444b;
+}
+
+/* Ênfase — uma palavra em itálico com gradiente (accent → quartz) */
+.ftc-em{font-style:italic;background:linear-gradient(100deg,var(--accent),var(--quartz));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Variable Fraunces — SOFT 100, WONK 1 nos títulos */
+h1,h2,h3,.exp-body h3,.proj h3,.edu-item h4,.lang-panel h3,.brand,.hero-loc b,.badge{font-variation-settings:"SOFT" 100,"WONK" 1}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -47,18 +109,12 @@ a{color:inherit;text-decoration:none}
    GRAIN + NOISE OVERLAY — paper feel
    ============================================================ */
 body::before{
-  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.26 0 0 0 0 0.3 0 0 0 0 0.3 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.18;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2  0 0 0 0 .24  0 0 0 0 .26  0 0 0 .9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
+@media (prefers-color-scheme: dark){body::before{mix-blend-mode:screen;opacity:.1;filter:invert(1)}}
 
-/* ============================================================
-   CUSTOM CURSOR
-   ============================================================ */
-.cursor,.cursor-dot{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;mix-blend-mode:multiply}
-.cursor{width:36px;height:36px;border:1.5px solid var(--teal);transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s var(--ease),opacity .3s}
-.cursor-dot{width:6px;height:6px;background:var(--teal);transform:translate(-50%,-50%)}
-.cursor.hover{width:72px;height:72px;background:rgba(218,140,128,.35);border-color:transparent}
-@media(hover:none){.cursor,.cursor-dot{display:none}}
+/* Cursor nativo — mais discreto, menos "AI" */
 
 /* ============================================================
    TOP BAR
@@ -67,23 +123,22 @@ body::before{
   position:fixed;top:0;left:0;right:0;z-index:60;
   display:flex;justify-content:space-between;align-items:center;
   padding:22px clamp(24px,5vw,56px);
-  background:linear-gradient(to bottom,var(--cream) 20%,transparent);
-  transition:padding .4s var(--ease);
+  background:linear-gradient(to bottom,var(--paper) 20%,transparent);
+  transition:padding .4s var(--ease-soft),background .4s var(--ease-soft);
 }
-.nav.scrolled{padding:14px clamp(24px,5vw,56px);background:rgba(237,228,205,.96);border-bottom:1px solid var(--line)}
-.brand{font-family:var(--serif);font-weight:500;font-size:1.25rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--metal);animation:pulse 2.6s ease-in-out infinite;box-shadow:0 0 0 4px rgba(147,174,191,.22)}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.5}}
+.nav.scrolled{padding:14px clamp(24px,5vw,56px);background:rgba(247,251,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline)}
+.brand{font-family:var(--serif);font-weight:500;font-size:1.25rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:12px;color:var(--ink)}
+.brand .dot{width:32px;height:32px;border-radius:50%;background:var(--gradient-brand);display:inline-grid;place-items:center;font-family:var(--serif);font-style:italic;font-weight:600;font-size:.72rem;color:var(--on-pastel);font-variation-settings:"SOFT" 100,"WONK" 1;box-shadow:var(--shadow-sm)}
+.brand .dot::after{content:"ftc"}
 .nav-right{display:flex;align-items:center;gap:28px}
-.nav-links{display:none;gap:28px;font-size:.84rem;font-weight:500;letter-spacing:.02em}
-.nav-links a{position:relative;padding:4px 0;color:var(--teal-ink)}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav-links a .num{color:var(--lilac);font-family:var(--mono);font-size:.7rem;margin-right:5px}
-@media(min-width:900px){.nav-links{display:flex}}
-.lang-switch{display:flex;align-items:center;gap:0;font-family:var(--mono);font-size:.78rem;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--cream)}
-.lang-switch button{background:none;border:none;padding:7px 14px;cursor:pointer;color:var(--muted);font-family:inherit;font-size:inherit;transition:.3s}
-.lang-switch button.on{background:var(--teal);color:var(--cream)}
+.nav-links{display:none;gap:6px;padding:4px;background:var(--paper-raised);border:1px solid var(--hairline);border-radius:999px;box-shadow:var(--shadow-sm);font-size:.82rem;font-weight:500}
+.nav-links a{position:relative;padding:8px 14px;border-radius:999px;color:var(--ink-muted);transition:color .3s var(--ease-soft),background .3s var(--ease-soft)}
+.nav-links a:hover{color:var(--ink);background:var(--paper)}
+.nav-links a .num{color:var(--accent);font-family:var(--mono);font-size:.68rem;margin-right:6px;font-weight:500}
+@media(min-width:900px){.nav-links{display:inline-flex}}
+.lang-switch{display:inline-flex;align-items:center;gap:0;font-family:var(--sans);font-size:.76rem;font-weight:600;border:1px solid var(--hairline);border-radius:999px;overflow:hidden;background:var(--paper-raised);box-shadow:var(--shadow-sm)}
+.lang-switch button{background:none;border:none;padding:7px 14px;cursor:pointer;color:var(--ink-muted);font-family:inherit;font-size:inherit;font-weight:inherit;transition:.3s}
+.lang-switch button.on{background:linear-gradient(135deg,var(--primary-from),var(--primary-to));color:var(--on-primary)}
 
 /* ============================================================
    PROGRESS BAR
@@ -95,42 +150,38 @@ body::before{
    ============================================================ */
 section{position:relative;padding:110px clamp(24px,5vw,56px);z-index:2}
 .wrap{max-width:1240px;margin:0 auto}
+/* Eyebrow — pílula do DS, mesma em todas as seções */
 .eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);
-  margin-bottom:28px;
+  display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:28px;padding:6px 14px;border-radius:999px;
+  background:var(--paper-raised);box-shadow:var(--shadow-sm);border:1px solid var(--hairline);
+  font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-muted);
 }
-.eyebrow::before{content:"";width:36px;height:1px;background:var(--teal)}
-.about .eyebrow{color:var(--metal)}
-.about .eyebrow::before{background:var(--metal)}
-.skills .eyebrow{color:var(--sage)}
-.skills .eyebrow::before{background:var(--sage)}
-#work .eyebrow{color:var(--metal)}
-#work .eyebrow::before{background:var(--metal)}
-.edu .eyebrow{color:var(--teal-ink)}
-.edu .eyebrow::before{background:var(--teal-ink)}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-height:1.05;color:var(--ink)}
-.italic{font-style:italic;font-weight:300;color:var(--teal)}
+.eyebrow::before{content:none}
+.eyebrow .num{font-family:var(--mono);color:var(--accent);letter-spacing:0;font-weight:500}
+.projects .eyebrow{background:rgba(247,251,255,.08);border-color:rgba(247,251,255,.12);color:var(--on-pewter)}
+.projects .eyebrow .num{color:var(--sage)}
+.contact .eyebrow{justify-content:center}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.1;color:var(--ink)}
+.italic{font-style:italic;font-weight:400;background:linear-gradient(100deg,var(--accent),var(--quartz));-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* ============================================================
-   REVEAL — scroll animations
-   ============================================================ */
-.r{opacity:0;transform:translateY(32px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
-.r.in{opacity:1;transform:none}
+/* Reveal — leve blur + sutil deslize lateral, uniforme em toda a página */
+.r{opacity:0;transform:translateX(-18px);filter:blur(4px);transition:opacity 1s var(--ease-soft),transform 1.1s var(--ease-soft),filter 1s var(--ease-soft)}
+.r.in{opacity:1;transform:none;filter:none}
 .r.d1{transition-delay:.08s}.r.d2{transition-delay:.18s}.r.d3{transition-delay:.28s}.r.d4{transition-delay:.38s}.r.d5{transition-delay:.48s}.r.d6{transition-delay:.58s}
 
-/* reveal letter-by-letter */
-.split .w{display:inline-block;overflow:hidden;vertical-align:top}
-.split .w b{display:inline-block;font-weight:inherit;transform:translateY(110%);transition:transform 1s var(--ease)}
+/* Título hero — palavra a palavra sobe por trás de uma máscara */
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.05em}
+.split .w b{display:inline-block;font-weight:inherit;transform:translateY(102%);transition:transform .95s var(--ease-soft)}
 .split.in .w b{transform:translateY(0)}
 .split .w:nth-child(1) b{transition-delay:.05s}
-.split .w:nth-child(2) b{transition-delay:.12s}
-.split .w:nth-child(3) b{transition-delay:.19s}
-.split .w:nth-child(4) b{transition-delay:.26s}
-.split .w:nth-child(5) b{transition-delay:.33s}
-.split .w:nth-child(6) b{transition-delay:.4s}
-.split .w:nth-child(7) b{transition-delay:.47s}
-.split .w:nth-child(8) b{transition-delay:.54s}
+.split .w:nth-child(2) b{transition-delay:.13s}
+.split .w:nth-child(3) b{transition-delay:.21s}
+.split .w:nth-child(4) b{transition-delay:.29s}
+.split .w:nth-child(5) b{transition-delay:.37s}
+.split .w:nth-child(6) b{transition-delay:.45s}
+.split .w:nth-child(7) b{transition-delay:.53s}
+.split .w:nth-child(8) b{transition-delay:.61s}
 
 /* ============================================================
    HERO
@@ -138,322 +189,267 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;line-
 .hero{min-height:100vh;padding-top:160px;padding-bottom:60px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-bg .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;will-change:transform}
-.hero-bg .b1{width:420px;height:420px;background:var(--metal);top:-120px;right:-80px;opacity:.55}
-.hero-bg .b2{width:360px;height:360px;background:var(--sage);bottom:-100px;left:-60px;opacity:.5}
-.hero-bg .b3{width:300px;height:300px;background:var(--lilac);top:40%;left:40%;opacity:.35}
-.hero-bg .b6{width:260px;height:260px;background:var(--butter);top:10%;left:5%;opacity:.5;position:absolute;border-radius:50%;filter:blur(60px)}
-.hero-bg .b4{display:none}
-.hero-bg .b5{display:none}
+/* Um único bloco de luz — DS pede "menos formas" */
+.hero-bg .b1{position:absolute;right:-18%;top:-10%;width:720px;height:720px;border-radius:50%;background:var(--gradient-brand);opacity:.35;filter:blur(90px)}
+.hero-bg .b2,.hero-bg .b3,.hero-bg .b6,.hero-bg .b4,.hero-bg .b5{display:none}
 
 .hero-inner{position:relative;z-index:2;display:grid;gap:40px}
 .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
-.hero-greeting{font-family:var(--mono);font-size:.82rem;color:var(--teal);letter-spacing:.12em;display:flex;align-items:center;gap:14px}
-.hero-greeting::before{content:"";width:40px;height:1px;background:var(--teal)}
-.hero-loc{font-family:var(--mono);font-size:.75rem;color:var(--metal);letter-spacing:.1em;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.hero-loc b{color:var(--teal-ink);font-weight:500;font-family:var(--serif);font-style:italic;font-size:1.05rem}
-.hero-loc span::before{content:"●";color:var(--sage);margin-right:6px;animation:pulse 2s ease-in-out infinite;display:inline-block}
+.hero-greeting{font-family:var(--mono);font-size:.78rem;color:var(--ink-muted);letter-spacing:.14em;display:inline-flex;align-items:center;gap:12px;padding:6px 14px;border-radius:999px;background:var(--paper-raised);box-shadow:var(--shadow-sm);border:1px solid var(--hairline)}
+.hero-greeting::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--neon)}
+.hero-loc{font-family:var(--mono);font-size:.75rem;color:var(--ink-muted);letter-spacing:.08em;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.hero-loc b{color:var(--ink);font-weight:500;font-family:var(--serif);font-style:italic;font-size:1.05rem}
 
 .hero h1{
   font-size:clamp(2.8rem,8vw,6.4rem);
-  font-weight:300;
-  line-height:.95;
-  letter-spacing:-.04em;
+  font-weight:500;
+  line-height:.98;
+  letter-spacing:-.03em;
 }
-.hero h1 .amp{font-style:italic;color:var(--metal);font-weight:300}
-.hero h1 .accent{position:relative;display:inline-block}
-.hero h1 .accent svg{position:absolute;left:-6%;bottom:-6%;width:112%;height:auto;z-index:-1;color:var(--butter)}
-.hero h1 em{font-style:italic;font-weight:300;color:var(--teal)}
+.hero h1 .amp{font-style:italic;color:var(--ink-muted);font-weight:400}
+.hero h1 em{font-style:italic;font-weight:400;background:linear-gradient(100deg,var(--accent),var(--quartz));-webkit-background-clip:text;background-clip:text;color:transparent}
 
 .hero-sub{display:grid;grid-template-columns:1fr;gap:40px;margin-top:30px;align-items:end}
 @media(min-width:900px){.hero-sub{grid-template-columns:1fr auto}}
-.hero-lead{font-family:var(--serif);font-weight:300;font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.55;max-width:52ch;color:var(--teal-ink)}
-.hero-lead .mono{font-family:var(--mono);font-size:.72em;color:var(--lilac);background:rgba(218,140,128,.14);padding:2px 10px;border-radius:999px;margin:0 2px;vertical-align:middle}
+.hero-lead{font-family:var(--sans);font-weight:400;font-size:clamp(1.02rem,1.3vw,1.18rem);line-height:1.6;max-width:56ch;color:var(--ink)}
+.hero-lead .mono{font-family:var(--mono);font-size:.78em;color:var(--ink);background:var(--paper-raised);padding:2px 10px;border-radius:999px;border:1px solid var(--hairline);margin:0 2px;vertical-align:middle}
 
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .btn{
-  position:relative;overflow:hidden;
   display:inline-flex;align-items:center;gap:10px;
-  padding:16px 28px;border-radius:999px;
-  font-family:var(--sans);font-weight:500;font-size:.88rem;letter-spacing:.03em;
-  cursor:pointer;border:1px solid var(--teal);background:var(--teal);color:var(--cream);
-  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+  padding:14px 26px;border-radius:999px;
+  font-family:var(--sans);font-weight:600;font-size:.9rem;letter-spacing:.01em;
+  cursor:pointer;border:1px solid transparent;
+  background:linear-gradient(135deg,var(--primary-from),var(--primary-to));color:var(--on-primary);
+  box-shadow:var(--shadow-md);
+  transition:transform .25s var(--ease-soft),box-shadow .3s var(--ease-soft);
 }
-.btn:hover{transform:translateY(-3px);box-shadow:0 18px 38px -14px rgba(121,133,129,.55)}
-.btn.ghost{background:transparent;color:var(--sage);border-color:var(--sage)}
-.btn.ghost:hover{background:var(--sage);color:var(--cream)}
-.btn .arr{display:inline-block;transition:transform .4s var(--ease)}
-.btn:hover .arr{transform:translateX(5px)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-neon),var(--shadow-md)}
+.btn.ghost{background:var(--paper-raised);color:var(--ink);border-color:var(--border-strong);box-shadow:var(--shadow-sm)}
+.btn.ghost:hover{border-color:var(--ink);background:var(--paper-raised);box-shadow:var(--shadow-sm)}
+.btn .arr{display:inline-block;transition:transform .25s var(--ease-soft)}
+.btn:hover .arr{transform:translateX(4px)}
 
-.scroll-tip{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.18em;margin-top:50px}
-.scroll-tip .line{width:48px;height:1px;background:var(--muted);position:relative;overflow:hidden}
-.scroll-tip .line::after{content:"";position:absolute;left:-20px;top:0;width:20px;height:100%;background:var(--metal);animation:slide 2.2s ease-in-out infinite}
-@keyframes slide{0%{left:-20px}100%{left:48px}}
+.scroll-tip{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.7rem;color:var(--ink-muted);letter-spacing:.18em;margin-top:50px;text-transform:uppercase}
+.scroll-tip .line{width:40px;height:1px;background:var(--hairline);position:relative;overflow:hidden}
+.scroll-tip .line::after{content:"";position:absolute;left:-16px;top:0;width:16px;height:100%;background:var(--quartz);animation:slide 2.4s ease-in-out infinite}
+@keyframes slide{0%{left:-16px}100%{left:40px}}
 
 /* ============================================================
    MARQUEE TAGS
    ============================================================ */
 .marquee{
   position:relative;z-index:2;
-  margin-top:40px;padding:22px 0;
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin-top:40px;padding:26px 0;
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
   overflow:hidden;
-  background:var(--cream-2);
+  background:var(--paper-raised);
   mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
 }
-.marquee-track{display:flex;gap:36px;animation:marq 36s linear infinite;width:max-content}
-.marquee span{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--teal-ink);display:inline-flex;align-items:center;gap:36px;white-space:nowrap}
-.marquee span::after{content:"✦";color:var(--lilac);font-style:normal}
-.marquee span:nth-child(3n)::after{color:var(--sage)}
-.marquee span:nth-child(3n+1)::after{color:var(--teal)}
-.marquee span:nth-child(3n+2)::after{color:var(--metal)}
+.marquee-track{display:flex;gap:52px;animation:marq 50s linear infinite;width:max-content}
+.marquee span{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05rem;color:var(--ink);display:inline-flex;align-items:center;gap:52px;white-space:nowrap}
+.marquee span::after{content:"—";color:var(--quartz);font-style:normal;font-family:var(--sans);opacity:.5}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* ============================================================
    ABOUT
    ============================================================ */
-.about{background:linear-gradient(180deg,var(--cream) 0%,#C0C5AF 100%);position:relative;overflow:hidden}
-.about::before{content:"";position:absolute;top:15%;right:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(147,174,191,.4),transparent 65%);z-index:0;pointer-events:none}
+.about{background:var(--paper);position:relative;overflow:hidden}
+.about::before{content:"";position:absolute;top:10%;right:-10%;width:420px;height:420px;border-radius:50%;background:var(--gradient-mist);opacity:.22;filter:blur(80px);z-index:0;pointer-events:none}
 .about .wrap{position:relative;z-index:1}
 .about-grid{display:grid;gap:60px;grid-template-columns:1fr;align-items:start}
 @media(min-width:900px){.about-grid{grid-template-columns:.9fr 1.1fr;gap:80px}}
 .about h2{font-size:clamp(2rem,4vw,3.2rem)}
 .about-left{position:sticky;top:120px}
 .portrait{
-  position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
-  background:linear-gradient(145deg,var(--lilac) 0%,var(--teal) 55%,var(--teal-ink) 100%);
-  box-shadow:0 50px 100px -40px rgba(63,8,0,.4);
+  position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;
+  background:var(--gradient-brand);
+  box-shadow:var(--shadow-lg),var(--shadow-neon);
+  display:grid;place-items:center;padding:36px;
 }
 .portrait::before{
-  content:"";position:absolute;inset:0;z-index:1;
-  background:radial-gradient(circle at 30% 20%,rgba(218,140,128,.4),transparent 50%),
-             radial-gradient(circle at 70% 80%,rgba(147,174,191,.4),transparent 55%);
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  opacity:.22;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .2  0 0 0 0 .24  0 0 0 0 .26  0 0 0 .9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
-.portrait .initials{
-  position:absolute;inset:0;display:grid;place-items:center;z-index:2;
-  font-family:var(--serif);font-weight:300;font-size:12rem;color:rgba(237,228,205,.95);
-  font-style:italic;letter-spacing:-.05em;text-shadow:0 10px 40px rgba(0,0,0,.2);
+.portrait .monogram{
+  position:relative;z-index:2;
+  font-family:var(--serif);font-style:italic;font-weight:600;
+  font-variation-settings:"SOFT" 100,"WONK" 1;
+  font-size:10rem;letter-spacing:.01em;color:var(--on-pastel);
+  line-height:1;
 }
-.portrait .ribbon,.portrait .badge{z-index:3}
-.portrait .ribbon{
-  position:absolute;top:28px;left:-30px;transform:rotate(-6deg);
-  background:var(--teal);color:var(--cream);padding:8px 44px;font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
-}
+.portrait .badge,.portrait .manifesto{z-index:3}
 .portrait .badge{
-  position:absolute;bottom:24px;right:24px;
-  width:120px;height:120px;border-radius:50%;background:var(--butter);
-  display:grid;place-items:center;text-align:center;
-  font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--teal-ink);
-  animation:spin 18s linear infinite;line-height:1.2;
+  position:absolute;bottom:22px;right:22px;
+  width:110px;height:110px;border-radius:50%;background:var(--paper-raised);
+  display:grid;place-items:center;text-align:center;box-shadow:var(--shadow-sm);
+  animation:spin 22s linear infinite;
 }
 .badge-text{position:absolute;inset:0}
-.badge-text text{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;fill:var(--teal-ink);text-transform:uppercase}
+.badge-text text{font-family:var(--mono);font-size:9px;letter-spacing:.24em;fill:var(--ink);text-transform:uppercase}
+.portrait .manifesto{
+  position:absolute;left:22px;right:22px;bottom:22px;max-width:62%;
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-variation-settings:"SOFT" 100,"WONK" 1;
+  font-size:.95rem;line-height:1.3;color:var(--on-pastel);
+  background:rgba(247,251,255,.78);backdrop-filter:blur(6px);
+  padding:14px 16px;border-radius:14px;
+}
+.portrait .manifesto em{font-style:italic;color:var(--accent)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-.about-right p{font-family:var(--serif);font-weight:300;font-size:clamp(1rem,1.3vw,1.1rem);line-height:1.6;color:var(--teal-ink);margin-bottom:20px}
-.about-right p:first-of-type{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--ink)}
-.about-right p .hl{background:linear-gradient(transparent 55%,var(--butter) 55%);padding:0 3px}
-.values{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:36px}
+.about-right p{font-family:var(--sans);font-weight:400;font-size:clamp(.98rem,1.1vw,1.05rem);line-height:1.7;color:var(--ink-muted);margin-bottom:20px;max-width:62ch}
+.about-right p:first-of-type{font-size:clamp(1.08rem,1.3vw,1.2rem);color:var(--ink);font-weight:400;line-height:1.6}
+.about-right p .hl{background:linear-gradient(transparent 60%,var(--sage) 60%);padding:0 3px;color:var(--ink);font-weight:500}
+.values{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
 .value{
-  padding:22px;border-radius:14px;background:var(--cream);border:1px solid var(--line);
-  transition:transform .5s var(--ease),background .5s var(--ease);
+  position:relative;padding:22px 24px;border-radius:18px;background:var(--paper-raised);border:1px solid var(--hairline);
+  box-shadow:var(--shadow-sm);
+  transition:transform .35s var(--ease-soft),box-shadow .35s var(--ease-soft),border-color .35s var(--ease-soft);
 }
-.value:hover{transform:translateY(-5px);background:var(--peach)}
-.value .ico{font-family:var(--serif);font-size:1.6rem;color:var(--lilac);margin-bottom:8px}
-.value:nth-child(1) .ico{color:var(--teal)}
-.value:nth-child(2) .ico{color:var(--sage)}
-.value:nth-child(3) .ico{color:var(--metal)}
-.value:nth-child(4) .ico{color:var(--lilac)}
-.value h4{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
-.value p{font-family:var(--sans);font-weight:400;font-size:.85rem;color:var(--muted);margin:0;line-height:1.5}
+.value:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+.value .ico{display:inline-block;width:28px;height:2px;background:var(--quartz);margin-bottom:14px;border-radius:2px;transition:width .4s var(--ease-soft),background .4s var(--ease-soft)}
+.value:hover .ico{width:56px;background:var(--accent)}
+.value h4{font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:6px}
+.value p{font-family:var(--mono);font-weight:400;font-size:.78rem;color:var(--ink-muted);margin:0;line-height:1.55}
 
 /* ============================================================
    EXPERIENCE
    ============================================================ */
-#work{background:linear-gradient(180deg,var(--cream-2) 0%,var(--cream) 30%,var(--cream) 100%);position:relative;overflow:hidden}
-#work::before{content:"";position:absolute;top:10%;right:-100px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(147,174,191,.3),transparent 65%);z-index:0}
-#work::after{content:"";position:absolute;bottom:5%;left:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(112,116,79,.22),transparent 65%);z-index:0}
+#work{background:var(--paper);position:relative;overflow:hidden}
 #work .wrap{position:relative;z-index:1}
-.exp-wrap{display:grid;gap:30px;margin-top:60px}
+.exp-wrap{display:grid;gap:18px;margin-top:60px}
 .exp-row{
-  position:relative;padding:36px 0;border-top:1px solid var(--line);
-  display:grid;gap:30px;grid-template-columns:1fr;align-items:start;
-  transition:background .5s var(--ease),padding .5s var(--ease);
-  cursor:pointer;
+  position:relative;padding:32px 28px;border:1px solid var(--hairline);border-radius:28px;background:var(--paper-raised);
+  display:grid;gap:28px;grid-template-columns:1fr;align-items:start;
+  box-shadow:var(--shadow-sm);
+  transition:transform .4s var(--ease-soft),box-shadow .4s var(--ease-soft),border-color .4s var(--ease-soft);
 }
-.exp-row:last-child{border-bottom:1px solid var(--line)}
-@media(min-width:800px){.exp-row{grid-template-columns:.9fr 2fr .5fr;padding:46px 24px;margin:0 -24px;border-radius:16px}}
-.exp-row:hover{background:var(--cream-2)}
-.exp-row::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;transition:height .5s var(--ease);border-radius:3px}
-.exp-row:hover::before{height:60%}
-.exp-row:nth-child(1)::before{background:var(--teal)}
-.exp-row:nth-child(2)::before{background:var(--sage)}
-.exp-row:nth-child(3)::before{background:var(--metal)}
-.exp-when{font-family:var(--mono);font-size:.78rem;color:var(--teal);letter-spacing:.08em}
-.exp-body h3{font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:400;margin-bottom:4px;transition:transform .5s var(--ease)}
-.exp-row:hover .exp-body h3{transform:translateX(10px)}
-.exp-body .where{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--lilac);font-size:1.1rem;margin-bottom:16px}
-.exp-body ul{list-style:none;display:grid;gap:10px}
-.exp-body li{position:relative;padding-left:22px;color:var(--teal-ink);font-size:.95rem;line-height:1.6}
-.exp-body li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:1px;background:var(--teal)}
-.exp-stat{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--teal);line-height:1;font-style:italic;text-align:right}
-.exp-row:nth-child(1) .exp-stat{color:var(--teal)}
-.exp-row:nth-child(2) .exp-stat{color:var(--sage)}
-.exp-row:nth-child(3) .exp-stat{color:var(--metal)}
-.exp-stat small{display:block;font-family:var(--mono);font-style:normal;font-size:.7rem;color:var(--muted);letter-spacing:.14em;margin-top:6px}
+@media(min-width:800px){.exp-row{grid-template-columns:150px 1fr auto;gap:40px;padding:36px 36px}}
+.exp-row:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+.exp-when{font-family:var(--mono);font-size:.74rem;color:var(--on-pastel);letter-spacing:.04em;padding:6px 12px;border-radius:999px;background:var(--gradient-mist);justify-self:start;align-self:start;line-height:1.5}
+.exp-when small{color:var(--on-pastel);opacity:.75}
+.exp-body h3{font-size:clamp(1.4rem,2.2vw,1.6rem);font-weight:600;margin-bottom:4px;color:var(--ink)}
+.exp-body .where{font-family:var(--sans);font-style:normal;font-weight:600;color:var(--quartz);font-size:.95rem;margin-bottom:18px}
+.exp-body ul{list-style:none;display:grid;gap:12px;max-width:68ch}
+.exp-body li{position:relative;padding-left:22px;color:var(--ink-muted);font-size:.95rem;line-height:1.65}
+.exp-body li::before{content:"";position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--quartz)}
+.exp-stat{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--ink);line-height:1;font-style:italic;text-align:right;font-variation-settings:"SOFT" 100,"WONK" 1}
+.exp-stat small{display:block;font-family:var(--mono);font-style:normal;font-size:.68rem;color:var(--ink-muted);letter-spacing:.14em;margin-top:8px;font-weight:500;text-transform:uppercase}
 
 /* ============================================================
    PROJECTS
    ============================================================ */
-.projects{background:linear-gradient(165deg,var(--teal-ink) 0%,#4a5048 50%,var(--teal) 100%);color:var(--cream);overflow:hidden;position:relative}
-.projects::before{content:"";position:absolute;top:-150px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(147,174,191,.4),transparent 60%);z-index:0}
-.projects::after{content:"";position:absolute;bottom:-120px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(112,116,79,.35),transparent 60%);z-index:0}
+/* Única seção pewter da página — o bloco escuro do DS */
+.projects{background:var(--pewter);color:var(--on-pewter);overflow:hidden;position:relative}
+.projects::before{content:"";position:absolute;top:-30%;right:-15%;width:640px;height:640px;border-radius:50%;background:var(--gradient-brand);opacity:.18;filter:blur(90px);z-index:0}
 .projects .wrap{position:relative;z-index:1}
-.projects .eyebrow{color:var(--metal)}
-.projects .eyebrow::before{background:var(--metal)}
-.projects h2{color:var(--cream)}
-.projects .ital{color:var(--butter);font-style:italic;font-weight:300}
+.projects h2{color:var(--on-pewter)}
+.projects h2 .italic,.projects h2 .ftc-em,.projects .ital{background:linear-gradient(100deg,var(--sage),var(--thistle));-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;font-weight:400}
 
-.proj-grid{display:grid;gap:28px;margin-top:70px;grid-template-columns:1fr}
+.proj-grid{display:grid;gap:18px;margin-top:70px;grid-template-columns:1fr}
 @media(min-width:800px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
 .proj{
-  position:relative;padding:40px 36px;border-radius:22px;overflow:hidden;
-  background:rgba(255,255,255,.04);border:1px solid rgba(228,216,194,.18);
-  transition:transform .6s var(--ease),background .6s var(--ease);
-  display:flex;flex-direction:column;justify-content:space-between;min-height:360px;
+  position:relative;padding:32px 30px;border-radius:28px;overflow:hidden;
+  background:rgba(247,251,255,.04);border:1px solid rgba(247,251,255,.12);
+  backdrop-filter:blur(10px);
+  transition:transform .35s var(--ease-soft),background .35s var(--ease-soft),border-color .35s var(--ease-soft);
+  display:flex;flex-direction:column;justify-content:space-between;min-height:340px;
 }
-.proj::before{
-  content:"";position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .6s var(--ease);
-  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(192,197,175,.22),transparent 50%);
-}
-.proj:hover::before{opacity:1}
-.proj:hover{transform:translateY(-10px);background:rgba(255,255,255,.08)}
-.proj>*{position:relative;z-index:1}
-.proj-num{font-family:var(--mono);font-size:.76rem;color:var(--butter);letter-spacing:.14em}
-.proj h3{color:var(--cream);font-size:1.6rem;font-weight:400;margin:16px 0 12px}
-.proj h3 em{color:var(--butter);font-style:italic;font-weight:300}
-.proj p{color:#C0C5AF;font-size:.95rem;line-height:1.6;margin-bottom:22px;max-width:48ch}
+.proj:hover{transform:translateY(-4px);background:rgba(247,251,255,.08);border-color:rgba(247,251,255,.22)}
+.proj-num{font-family:var(--mono);font-size:.72rem;color:var(--sage);letter-spacing:.14em}
+.proj h3{color:var(--on-pewter);font-size:1.5rem;font-weight:600;margin:18px 0 12px;letter-spacing:-.01em}
+.proj h3 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--sage),var(--thistle));-webkit-background-clip:text;background-clip:text;color:transparent}
+.proj p{color:#c7d2db;font-size:.93rem;line-height:1.65;margin-bottom:22px;max-width:52ch}
 .proj-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
-.proj-tags span{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--peach);padding:5px 11px;border:1px solid rgba(228,216,194,.35);border-radius:999px;transition:background .3s,color .3s}
-.proj:nth-child(2) .proj-tags span{color:#C0C5AF;border-color:rgba(192,197,175,.5)}
-.proj:nth-child(3) .proj-tags span{color:#93AEBF;border-color:rgba(147,174,191,.5)}
-.proj:nth-child(4) .proj-tags span{color:var(--metal);border-color:rgba(147,174,191,.5)}
-.proj:nth-child(5) .proj-tags span{color:var(--lilac);border-color:rgba(218,140,128,.55)}
-.proj:nth-child(6) .proj-tags span{color:#C0C5AF;border-color:rgba(112,116,79,.5)}
-.proj:nth-child(2) .proj h3 em,.proj:nth-child(2) h3 em{color:var(--sage)}
-.proj:nth-child(3) h3 em{color:var(--butter)}
-.proj:nth-child(4) h3 em{color:var(--metal)}
-.proj:nth-child(5) h3 em{color:var(--lilac)}
-.proj:nth-child(6) h3 em{color:var(--peach)}
-.proj.hero-card{grid-column:1/-1;background:linear-gradient(135deg,rgba(147,174,191,.22) 0%,rgba(218,140,128,.14) 50%,rgba(112,116,79,.14) 100%)}
-.proj.hero-card h3{font-size:clamp(1.8rem,3vw,2.4rem)}
-.featured{position:absolute;top:28px;right:28px;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--teal-ink);background:var(--butter);padding:6px 12px;border-radius:999px;text-transform:uppercase;z-index:2}
-.proj-metric{display:flex;gap:30px;margin-top:20px;flex-wrap:wrap}
-.proj-metric div{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--butter);line-height:1}
-.proj-metric div small{display:block;font-family:var(--mono);font-size:.66rem;color:var(--peach);letter-spacing:.12em;margin-top:6px}
+.proj-tags span{font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;font-weight:500;color:var(--on-pastel);background:var(--sage);padding:6px 12px;border-radius:999px;transition:transform .2s var(--ease-soft)}
+.proj-tags span:nth-child(3n){background:var(--thistle)}
+.proj-tags span:nth-child(3n+1){background:var(--icy);box-shadow:inset 0 0 0 1px var(--hairline)}
+.proj-tags span:hover{transform:translateY(-1px)}
+.proj.hero-card{grid-column:1/-1;background:rgba(247,251,255,.06)}
+.proj.hero-card:hover{box-shadow:var(--shadow-neon)}
+.proj.hero-card h3{font-size:clamp(1.8rem,3vw,2.2rem)}
+.featured{position:absolute;top:28px;right:28px;font-family:var(--sans);font-size:.66rem;font-weight:600;letter-spacing:.14em;color:var(--on-pewter);background:transparent;padding:6px 12px;border-radius:999px;text-transform:uppercase;z-index:2;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(185,245,180,.5)}
+.featured::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.proj-metric{display:flex;gap:28px;margin-top:4px;margin-bottom:20px;flex-wrap:wrap}
+.proj-metric div{font-family:var(--serif);font-size:1.6rem;font-weight:500;color:var(--sage);line-height:1;font-variation-settings:"SOFT" 100,"WONK" 1}
+.proj-metric div small{display:block;font-family:var(--mono);font-size:.66rem;color:#c7d2db;letter-spacing:.12em;margin-top:6px;font-style:normal;font-weight:400}
 
 /* ============================================================
    SKILLS
    ============================================================ */
-.skills{background:linear-gradient(180deg,var(--cream) 0%,var(--peach) 40%,var(--cream-2) 100%);position:relative;overflow:hidden}
-.skills::before{content:"";position:absolute;top:-120px;left:-100px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(112,116,79,.32),transparent 65%);z-index:0}
-.skills::after{content:"";position:absolute;bottom:-100px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(147,174,191,.4),transparent 65%);z-index:0}
+.skills{background:var(--paper);position:relative;overflow:hidden}
 .skills .wrap{position:relative;z-index:1}
 .skills-head{display:grid;gap:30px;grid-template-columns:1fr;align-items:end;margin-bottom:60px}
 @media(min-width:900px){.skills-head{grid-template-columns:1.6fr 1fr}}
 .skills h2{font-size:clamp(2rem,4vw,3.2rem)}
-.skills-head p{font-family:var(--serif);font-weight:300;font-size:1.1rem;color:var(--teal-ink);line-height:1.6}
-.skill-grid{display:grid;gap:2px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;grid-template-columns:1fr}
+.skills-head p{font-family:var(--sans);font-weight:400;font-size:1.02rem;color:var(--ink-muted);line-height:1.65;max-width:38ch}
+.skill-grid{display:grid;gap:14px;grid-template-columns:1fr}
 @media(min-width:720px){.skill-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1080px){.skill-grid{grid-template-columns:repeat(3,1fr)}}
-.skill-cat{background:var(--cream);padding:34px 30px;transition:background .5s var(--ease);position:relative;overflow:hidden}
-.skill-cat::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--teal);transition:width .7s var(--ease)}
-.skill-cat:hover{background:var(--cream-2)}
-.skill-cat:hover::after{width:100%}
-.skill-cat .num{font-family:var(--mono);font-size:.72rem;color:var(--lilac);letter-spacing:.12em}
-.skill-cat:nth-child(1){border-top:3px solid var(--teal);background:linear-gradient(165deg,rgba(121,133,129,.18),var(--cream) 70%)}
-.skill-cat:nth-child(2){border-top:3px solid var(--sage);background:linear-gradient(165deg,rgba(112,116,79,.18),var(--cream) 70%)}
-.skill-cat:nth-child(3){border-top:3px solid var(--metal);background:linear-gradient(165deg,rgba(147,174,191,.24),var(--cream) 70%)}
-.skill-cat:nth-child(4){border-top:3px solid var(--lilac);background:linear-gradient(165deg,rgba(218,140,128,.16),var(--cream) 70%)}
-.skill-cat:nth-child(5){border-top:3px solid var(--teal-ink);background:linear-gradient(165deg,rgba(63,8,0,.1),var(--cream) 70%)}
-.skill-cat:nth-child(6){border-top:3px solid var(--butter);background:linear-gradient(165deg,rgba(192,197,175,.3),var(--cream) 70%)}
-.skill-cat:nth-child(4) .num{color:var(--lilac)}
-.skill-cat:nth-child(6) .num{color:var(--butter)}
-.skill-cat:nth-child(1) .num{color:var(--teal)}
-.skill-cat:nth-child(2) .num{color:var(--sage)}
-.skill-cat:nth-child(3) .num{color:var(--metal)}
-.skill-cat:nth-child(5) .num{color:var(--teal-ink)}
-.skill-cat h3{font-size:1.25rem;margin:6px 0 18px}
-.skill-chips{display:flex;flex-wrap:wrap;gap:7px}
+.skill-cat{background:var(--paper-raised);padding:28px 26px;border:1px solid var(--hairline);border-radius:22px;box-shadow:var(--shadow-sm);transition:transform .35s var(--ease-soft),box-shadow .35s var(--ease-soft),border-color .35s var(--ease-soft);position:relative;overflow:hidden}
+.skill-cat:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+.skill-cat .num{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:0;font-weight:500}
+.skill-cat h3{font-size:1.15rem;margin:8px 0 18px;font-weight:600;letter-spacing:-.01em}
+.skill-chips{display:flex;flex-wrap:wrap;gap:8px}
 .skill-chips span{
-  font-family:var(--mono);font-size:.74rem;color:var(--teal-ink);
-  padding:6px 11px;border:1px solid var(--line);border-radius:999px;
-  transition:background .3s,color .3s,border-color .3s;
+  font-family:var(--mono);font-size:.72rem;color:var(--on-pastel);font-weight:500;
+  padding:6px 12px;background:var(--sage);border-radius:999px;
+  transition:transform .2s var(--ease-soft);
 }
-.skill-chips span:hover{background:var(--teal);color:var(--cream);border-color:var(--teal)}
-.skill-cat:nth-child(2) .skill-chips span:hover{background:var(--sage);border-color:var(--sage)}
-.skill-cat:nth-child(3) .skill-chips span:hover{background:var(--metal);border-color:var(--metal)}
-.skill-cat:nth-child(4) .skill-chips span:hover{background:var(--lilac);border-color:var(--lilac)}
-.skill-cat:nth-child(5) .skill-chips span:hover{background:var(--teal-ink);border-color:var(--teal-ink)}
-.skill-cat:nth-child(6) .skill-chips span:hover{background:var(--butter);color:var(--teal-ink);border-color:var(--butter)}
+.skill-chips span:nth-child(3n){background:var(--thistle)}
+.skill-chips span:nth-child(3n+1){background:var(--icy);box-shadow:inset 0 0 0 1px var(--hairline)}
+.skill-chips span:hover{transform:translateY(-1px)}
 
 /* ============================================================
    EDUCATION + LANGUAGES
    ============================================================ */
-.edu{background:linear-gradient(180deg,var(--cream) 0%,#C0C5AF 60%,#93AEBF 100%);overflow:hidden;position:relative}
-.edu::before{content:"";position:absolute;top:-100px;left:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(112,116,79,.35),transparent 65%);z-index:0}
-.edu::after{content:"";position:absolute;bottom:-80px;right:-100px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(218,140,128,.3),transparent 65%);z-index:0}
+.edu{background:var(--paper-raised);overflow:hidden;position:relative}
+.edu::before{content:"";position:absolute;top:-20%;right:-10%;width:460px;height:460px;border-radius:50%;background:var(--gradient-mist);opacity:.3;filter:blur(90px);z-index:0}
 .edu .wrap{position:relative;z-index:1}
-.edu-grid{display:grid;gap:60px;grid-template-columns:1fr;margin-top:60px}
-@media(min-width:900px){.edu-grid{grid-template-columns:1.3fr 1fr}}
+.edu-grid{display:grid;gap:40px;grid-template-columns:1fr;margin-top:60px}
+@media(min-width:900px){.edu-grid{grid-template-columns:1.3fr 1fr;gap:60px}}
 .edu h2{font-size:clamp(2rem,4vw,3.2rem)}
-.edu-list{display:grid;gap:30px}
-.edu-item{position:relative;padding:28px 30px 28px 36px;background:rgba(237,228,205,.92);border:1px solid var(--line);border-radius:16px;transition:transform .5s var(--ease),box-shadow .5s var(--ease);overflow:hidden}
-.edu-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
-.edu-item:nth-child(1)::before{background:linear-gradient(180deg,var(--teal),var(--lilac))}
-.edu-item:nth-child(2)::before{background:linear-gradient(180deg,var(--sage),var(--butter))}
-.edu-item:nth-child(3)::before{background:linear-gradient(180deg,var(--metal),var(--teal-ink))}
-.edu-item:nth-child(1) .tag{color:var(--teal)}
-.edu-item:nth-child(2) .tag{color:var(--sage)}
-.edu-item:nth-child(3) .tag{color:var(--metal)}
-.edu-item:hover{transform:translateX(10px);box-shadow:0 20px 40px -20px rgba(63,8,0,.25)}
-.edu-item .tag{font-family:var(--mono);font-size:.7rem;color:var(--lilac);letter-spacing:.14em;margin-bottom:8px}
-.edu-item h4{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin-bottom:4px}
-.edu-item .inst{font-family:var(--serif);font-style:italic;color:var(--teal);margin-bottom:10px}
-.edu-item .desc{color:var(--muted);font-size:.9rem}
+.edu-list{display:grid;gap:16px}
+.edu-item{position:relative;padding:26px 28px 26px 32px;background:var(--paper);border:1px solid var(--hairline);border-radius:22px;transition:transform .35s var(--ease-soft),box-shadow .35s var(--ease-soft),border-color .35s var(--ease-soft);overflow:hidden}
+.edu-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;background:var(--quartz);border-radius:3px;transition:height .4s var(--ease-soft)}
+.edu-item:hover::before{height:60%}
+.edu-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+.edu-item .tag{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.02em;margin-bottom:8px;font-weight:500}
+.edu-item h4{font-family:var(--serif);font-weight:600;font-size:1.2rem;margin-bottom:4px;color:var(--ink)}
+.edu-item .inst{font-family:var(--sans);font-weight:500;font-style:normal;color:var(--quartz);margin-bottom:10px;font-size:.92rem}
+.edu-item .desc{color:var(--ink-muted);font-size:.9rem;line-height:1.6}
 
-.lang-panel{background:var(--cream);border-radius:20px;padding:40px 34px;border:1px solid var(--line);align-self:start}
-.lang-panel h3{font-size:1.6rem;margin-bottom:28px}
-.lang-row{margin-bottom:22px}
+.lang-panel{background:var(--paper-raised);border-radius:28px;padding:36px 32px;border:1px solid var(--hairline);box-shadow:var(--shadow-sm);align-self:start;position:relative;z-index:1}
+.lang-panel h3{font-size:1.4rem;margin-bottom:28px;font-weight:600}
+.lang-row{margin-bottom:20px}
 .lang-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-.lang-head b{font-family:var(--serif);font-weight:500;font-size:1.1rem}
-.lang-head span{font-family:var(--mono);font-size:.72rem;color:var(--teal);letter-spacing:.1em}
-.lang-bar{height:6px;background:rgba(63,8,0,.1);border-radius:999px;overflow:hidden}
-.lang-bar i{display:block;height:100%;width:0;background:var(--sage);border-radius:999px;transition:width 1.6s var(--ease) .2s}
+.lang-head b{font-family:var(--sans);font-weight:600;font-size:1rem;color:var(--ink)}
+.lang-head span{font-family:var(--mono);font-size:.72rem;color:var(--ink-muted);letter-spacing:.06em}
+.lang-bar{height:4px;background:var(--hairline);border-radius:999px;overflow:hidden}
+.lang-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--quartz),var(--sage));border-radius:999px;transition:width 1.4s var(--ease-soft) .2s}
 .r.in .lang-bar i{width:var(--w)}
 
 /* ============================================================
    CONTACT
    ============================================================ */
-.contact{background:var(--teal);color:var(--cream);text-align:center;padding:160px clamp(24px,5vw,56px) 60px;overflow:hidden;position:relative}
-.contact .circle-bg{position:absolute;inset:auto;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(147,174,191,.5),rgba(218,140,128,.2) 45%,transparent 70%);top:-200px;left:50%;transform:translateX(-50%);z-index:0}
-.contact::before{content:"";position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(112,116,79,.4),transparent 60%);z-index:0}
-.contact::after{content:"";position:absolute;top:30%;right:-150px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(147,174,191,.4),transparent 60%);z-index:0}
+.contact{background:var(--paper);color:var(--ink);text-align:center;padding:140px clamp(24px,5vw,56px) 60px;overflow:hidden;position:relative}
+.contact .circle-bg{position:absolute;inset:auto;width:720px;height:720px;border-radius:50%;background:var(--gradient-brand);opacity:.18;filter:blur(90px);top:-240px;left:50%;transform:translateX(-50%);z-index:0}
 .contact>*{position:relative;z-index:1}
-.contact .eyebrow{color:var(--peach);justify-content:center}
-.contact .eyebrow::before{background:var(--peach)}
-.contact h2{color:var(--cream);font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;margin-bottom:36px}
-.contact h2 em{color:var(--butter);font-style:italic;font-weight:300}
-.contact-lead{font-family:var(--serif);font-weight:300;font-size:clamp(1rem,1.3vw,1.15rem);color:#E4D8C2;max-width:52ch;margin:0 auto 44px}
-.contact-cta{display:inline-flex;align-items:center;gap:16px;background:var(--butter);color:var(--teal-ink);padding:18px 32px;border-radius:999px;font-family:var(--serif);font-size:clamp(1rem,1.4vw,1.2rem);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-.contact-cta:hover{transform:translateY(-5px);box-shadow:0 25px 55px -20px rgba(192,197,175,.65)}
-.contact-cta .arr{transition:transform .4s var(--ease)}
-.contact-cta:hover .arr{transform:translateX(8px) rotate(-10deg)}
-.contact-list{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;margin-top:60px}
-.contact-list a{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.86rem;letter-spacing:.06em;color:var(--peach);position:relative;padding:6px 0}
-.contact-list a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.contact-list a:hover::after{transform:scaleX(1)}
-footer{padding:40px clamp(24px,5vw,56px) 20px;background:var(--teal);color:#C0C5AF;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(228,216,194,.14)}
-footer .sig{color:var(--peach)}
+.contact h2{color:var(--ink);font-size:clamp(2.2rem,5vw,4rem);line-height:1.08;margin-bottom:28px}
+.contact h2 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--accent),var(--quartz));-webkit-background-clip:text;background-clip:text;color:transparent}
+.contact-lead{font-family:var(--sans);font-weight:400;font-size:clamp(1rem,1.2vw,1.1rem);color:var(--ink-muted);max-width:56ch;margin:0 auto 44px;line-height:1.65}
+.contact-cta{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--primary-from),var(--primary-to));color:var(--on-primary);padding:16px 30px;border-radius:999px;font-family:var(--sans);font-weight:600;font-size:clamp(.98rem,1.1vw,1.08rem);box-shadow:var(--shadow-md);transition:transform .25s var(--ease-soft),box-shadow .35s var(--ease-soft)}
+.contact-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow-neon),var(--shadow-md)}
+.contact-cta .arr{transition:transform .25s var(--ease-soft)}
+.contact-cta:hover .arr{transform:translateX(5px)}
+.contact-list{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:48px}
+.contact-list a{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:.88rem;font-weight:500;letter-spacing:.01em;color:var(--ink);background:var(--paper-raised);border:1px solid var(--hairline);box-shadow:var(--shadow-sm);padding:10px 18px;border-radius:999px;transition:transform .25s var(--ease-soft),border-color .25s var(--ease-soft),box-shadow .3s var(--ease-soft)}
+.contact-list a:hover{transform:translateY(-2px);border-color:var(--ink);box-shadow:var(--shadow-md)}
+.contact-list a span{color:var(--accent)}
+footer{padding:36px clamp(24px,5vw,56px) 24px;background:var(--pewter);color:var(--on-pewter);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(247,251,255,.08)}
+footer .sig{color:#c7d2db}
 
 /* ============================================================
    SIDE INDEX
@@ -461,12 +457,13 @@ footer .sig{color:var(--peach)}
 .side-index{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;gap:10px}
 @media(min-width:1100px){.side-index{display:flex} section{padding-right:clamp(90px,8vw,120px)}}
 .side-index a{
-  display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--teal-ink);
-  padding:4px 0;transition:color .3s;
+  display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--ink-muted);
+  padding:4px 0;transition:color .35s var(--ease-soft);
 }
-.side-index a .line{width:30px;height:1px;background:currentColor;transition:width .4s var(--ease)}
-.side-index a:hover,.side-index a.on{color:var(--teal-ink)}
-.side-index a.on .line{width:48px;height:2px}
+.side-index a .line{width:24px;height:1px;background:currentColor;transition:width .4s var(--ease-soft)}
+.side-index a:hover{color:var(--ink)}
+.side-index a.on{color:var(--accent)}
+.side-index a.on .line{width:48px;height:1px}
 
 /* ============================================================
    MOBILE
@@ -476,16 +473,13 @@ footer .sig{color:var(--peach)}
   .hero{padding-top:140px}
   .marquee span{font-size:.88rem}
   .exp-stat{font-size:2.4rem;text-align:left}
-  .portrait .initials{font-size:7rem}
+  .portrait .monogram{font-size:6rem}
+  .portrait .manifesto{font-size:.82rem;max-width:70%}
   .portrait .badge{width:90px;height:90px}
 }
 </style>
 </head>
 <body>
-
-<!-- Custom cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-dot" id="cursorDot"></div>
 
 <!-- Progress -->
 <div class="progress" id="progress"></div>
@@ -494,7 +488,7 @@ footer .sig{color:var(--peach)}
 <header class="nav" id="nav">
   <a class="brand" href="#top">
     <span class="dot"></span>
-    Fernanda<span style="color:var(--lilac);font-style:italic">.</span>Casali
+    <span>Fernanda<span style="color:var(--accent);font-style:italic">.</span>Casali</span>
   </a>
   <nav class="nav-right">
     <div class="nav-links">
@@ -535,7 +529,6 @@ footer .sig{color:var(--peach)}
       <div class="hero-greeting r"><span data-i18n="hello">Olá, prazer —</span></div>
       <div class="hero-loc r d1">
         <b>Sorocaba · SP</b>
-        <!-- <span data-i18n="avail">Disponível para novas oportunidades</span> -->
       </div>
     </div>
 
@@ -552,11 +545,13 @@ footer .sig{color:var(--peach)}
 
     <div class="hero-sub">
       <p class="hero-lead r d4" data-i18n="hero-lead">
-        Engenheira da Computação <span class="mono">8º semestre</span> construindo
-        produtos de dados end-to-end — da ingestão em Python até o dashboard em
-        Power BI. Atualmente na <b style="color:var(--teal);font-weight:500;font-style:italic">Metso</b>,
-        onde automatizei processos que recuperaram <b style="color:var(--teal);font-weight:500">100% do tempo</b>
-        do analista.
+        Sou estudante de Engenharia da Computação <span class="mono">8º semestre</span>
+        e estagiária de Análise de Dados em Compras na
+        <b style="color:var(--quartz);font-weight:500;font-style:italic">Metso</b>.
+        Projeto automações em Python, pipelines integrados a SAP e Outlook e
+        dashboards em Power BI — a automação de notas fiscais que entreguei
+        reduziu o processo de <b style="color:var(--quartz);font-weight:500">105 min para 2 min</b>
+        (−98%) e liberou 100% do tempo do analista.
       </p>
       <div class="hero-cta r d5">
         <a class="btn" href="#contact">
@@ -579,8 +574,8 @@ footer .sig{color:var(--peach)}
 <!-- MARQUEE -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Data Engineering</span><span>Analytics Engineering</span><span>Business Intelligence</span><span>Python · SQL · dbt</span><span>Snowflake · Power BI</span><span>Governança de Dados</span>
-    <span>Data Engineering</span><span>Analytics Engineering</span><span>Business Intelligence</span><span>Python · SQL · dbt</span><span>Snowflake · Power BI</span><span>Governança de Dados</span>
+    <span>Automation Development</span><span>Business Intelligence</span><span>Data Product Engineering</span><span>Python · SAP · Outlook</span><span>Power BI · DAX · Star Schema</span><span>LangChain · Groq · LLM Agents</span>
+    <span>Automation Development</span><span>Business Intelligence</span><span>Data Product Engineering</span><span>Python · SAP · Outlook</span><span>Power BI · DAX · Star Schema</span><span>LangChain · Groq · LLM Agents</span>
   </div>
 </div>
 
@@ -591,44 +586,44 @@ footer .sig{color:var(--peach)}
     <div class="about-grid">
       <div class="about-left r d1">
         <div class="portrait">
-          <div class="ribbon">Est. 2004</div>
-          <div class="initials">Fc</div>
+          <div class="monogram">FTC</div>
           <div class="badge">
             <svg class="badge-text" viewBox="0 0 120 120">
               <defs><path id="circ" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"/></defs>
-              <text><textPath href="#circ">Data · Analytics · BI · Automation · </textPath></text>
+              <text><textPath href="#circ">Data · Automation · BI · Engineering · </textPath></text>
             </svg>
           </div>
+          <div class="manifesto"><em>Transformo</em> processos manuais em sistemas que se mantêm sozinhos.</div>
         </div>
       </div>
       <div class="about-right">
-        <h2 class="r d2" data-i18n="about-h">Dados que viram <span class="italic">estratégia</span>.</h2>
+        <h2 class="r d2" data-i18n="about-h">Processos manuais viram <span class="ftc-em">sistemas</span>.</h2>
         <p class="r d3" data-i18n="about-1" style="margin-top:36px">
-          Estudante de <span class="hl">Engenharia da Computação</span> na FACENS, 8º semestre, atuando como estagiária de Análise de Dados em Compras na Metso. Construo produtos de dados e KPIs reutilizáveis ao longo de todo o ciclo — ingestão, transformação, entrega e monitoramento.
+          Sou estudante de <span class="hl">Engenharia da Computação</span> na FACENS, 8º semestre, e estagiária de Análise de Dados em Compras na Metso. Projeto, desenvolvo e coloco em produção automações em Python ponta a ponta — processamento de notas fiscais, extração diária de SAP e follow-ups por Outlook — com versionamento, testes, tratamento de erros e documentação.
         </p>
         <p class="r d4" data-i18n="about-2">
-          Perfil analítico, organizado e orientado a resultados. Foco em qualidade, consistência e governança da informação. Atualmente construo um pipeline <span class="hl">end-to-end em Snowflake + dbt</span>, orquestrado via CI/CD, buscando oportunidades em Engenharia de Dados e Analytics Engineering.
+          Também construo dashboards de Business Intelligence em Power BI (DAX, Power Query/M, modelagem star schema) que transformam volume operacional em informação para a gestão. Nos projetos pessoais aplico práticas de DataOps: ingestão por APIs, armazenamento em Parquet, validação com <span class="hl">pytest + GitHub Actions</span>, e exploro automação com IA via agentes LLM e integrações.
         </p>
         <div class="values">
           <div class="value r d3">
-            <div class="ico">✦</div>
-            <h4 data-i18n="v1-t">Dados</h4>
-            <p data-i18n="v1-p">Ingestão, modelagem dimensional e star schema</p>
+            <div class="ico"></div>
+            <h4 data-i18n="v1-t">Automação</h4>
+            <p data-i18n="v1-p">Python · SAP GUI · Outlook · win32com · Selenium</p>
           </div>
           <div class="value r d4">
-            <div class="ico">✧</div>
-            <h4 data-i18n="v2-t">Automação</h4>
-            <p data-i18n="v2-p">Pipelines Python · SAP · Outlook · 98% de ganho</p>
+            <div class="ico"></div>
+            <h4 data-i18n="v2-t">Dados & BI</h4>
+            <p data-i18n="v2-p">Power BI · DAX · Power Query/M · star schema · SQL</p>
           </div>
           <div class="value r d5">
-            <div class="ico">◈</div>
-            <h4 data-i18n="v3-t">Qualidade</h4>
-            <p data-i18n="v3-p">dbt tests, observabilidade e lineage</p>
+            <div class="ico"></div>
+            <h4 data-i18n="v3-t">Engenharia</h4>
+            <p data-i18n="v3-p">pytest · ruff · GitHub Actions · pandas · Parquet</p>
           </div>
           <div class="value r d6">
-            <div class="ico">❋</div>
-            <h4 data-i18n="v4-t">Estratégia</h4>
-            <p data-i18n="v4-p">Do dado bruto à decisão de negócio</p>
+            <div class="ico"></div>
+            <h4 data-i18n="v4-t">IA aplicada</h4>
+            <p data-i18n="v4-p">LangChain · Groq · text-to-SQL · XGBoost · scikit-learn</p>
           </div>
         </div>
       </div>
@@ -652,12 +647,13 @@ footer .sig{color:var(--peach)}
           <h3>Metso</h3>
           <div class="where" data-i18n="role-metso">Estagiária · Análise de Dados em Compras</div>
           <ul>
-            <li data-i18n="m1">Dashboards de Business Intelligence em Power BI para Purchase Orders e indicadores de compras, com cartões de KPI e medidas em DAX.</li>
-            <li data-i18n="m2">Pipelines end-to-end em Python integrados a SAP e Outlook — com validação e monitoramento embutidos. O pipeline de notas fiscais reduziu em 98% o tempo e o custo do processo (105 min → 2 min).</li>
-            <li data-i18n="m3">Pipeline agendado em SAP que gera diariamente a carteira de pedidos em aberto, garantindo disponibilidade e confiabilidade dos dados para análise downstream.</li>
+            <li data-i18n="m1">Projetei e coloquei em produção uma automação end-to-end em Python para processamento de notas fiscais, compartilhada entre múltiplos usuários — caí de 105 para 2 minutos por execução (−98% de tempo e custo) e liberei 100% do tempo do analista na tarefa.</li>
+            <li data-i18n="m2">Construí uma automação em Python integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto e publica a base atualizada de forma automática para toda a análise downstream.</li>
+            <li data-i18n="m3">Automatizei o envio de follow-ups por e-mail integrando Python ao Outlook, eliminando o disparo manual e padronizando a cobrança de pendências.</li>
+            <li data-i18n="m4">Desenvolvi dashboards de Business Intelligence em Power BI para Purchase Orders e indicadores de compras — modelagem star schema, medidas em DAX e uma visão única da carteira de follow-up para a gerência.</li>
           </ul>
         </div>
-        <div class="exp-stat">98%<small>time cut</small></div>
+        <div class="exp-stat">98%<small data-i18n="s-timecut">tempo reduzido</small></div>
       </div>
 
       <div class="exp-row r d3">
@@ -669,9 +665,9 @@ footer .sig{color:var(--peach)}
           <h3>Liquid Galaxy</h3>
           <div class="where" data-i18n="role-lg">Pesquisadora PIBIT · Google Summer of Code (RUXAILAB)</div>
           <ul>
-            <li data-i18n="lg1">Pesquisa sobre arquitetura de software voltada à análise de sistemas médicos com base em avaliação heurística, vinculada ao Google Summer of Code — RUXAILAB.</li>
-            <li data-i18n="lg2">Utilizei Vue.js, Firebase, Figma, JavaScript e Python, aprimorando também habilidades de comunicação científica, organização de dados e pensamento analítico.</li>
-            <li data-i18n="lg3">Aprimorei habilidades em engenharia de software, acessibilidade, usabilidade e documentação técnica, atuando também em atividades de levantamento bibliográfico, modelagem de sistemas e apresentação de resultados.</li>
+            <li data-i18n="lg1">Pesquisei arquitetura de software para análise de sistemas médicos com base em avaliação heurística, vinculada ao Google Summer of Code — RUXAILAB (organização open-source).</li>
+            <li data-i18n="lg2">Trabalhei com Vue.js, Firebase, Python, JavaScript e Figma, organizando dados de pesquisa e produzindo documentação técnica e comunicação científica.</li>
+            <li data-i18n="lg3">Desenvolvi habilidades de engenharia de software, usabilidade e documentação, atuando em levantamento bibliográfico, modelagem de sistemas e apresentação de resultados.</li>
           </ul>
         </div>
         <div class="exp-stat">GSoC<small>research</small></div>
@@ -686,10 +682,10 @@ footer .sig{color:var(--peach)}
           <h3>Falcons Aerodesign</h3>
           <div class="where" data-i18n="role-falcons">Equipe de Competição · Estabilidade & Marketing</div>
           <ul>
-            <li data-i18n="fa1">Atuo no desenvolvimento de aeronaves para competições, contribuindo nas áreas de estabilidade & controle e marketing técnico.</li>
-            <li data-i18n="fa2">Participei da criação de soluções inovadoras, como a hélice contra-rotativa premiada com Menção Honrosa pela APVE.</li>
-            <li data-i18n="fa3">Aprendi a trabalhar em equipe multidisciplinar, respeitando prazos e objetivos coletivos, além de desenvolver habilidades de planejamento, resolução de problemas, comunicação, criatividade e liderança proativa.</li>
-            <li data-i18n="fa4">Participei da criação de materiais de divulgação técnica e gerenciamento de redes sociais, unindo conhecimentos de engenharia com estratégias de comunicação.</li>
+            <li data-i18n="fa1">Atuei no desenvolvimento de aeronaves para competição, contribuindo nas áreas de estabilidade & controle e marketing técnico.</li>
+            <li data-i18n="fa2">Participei da hélice contra-rotativa premiada com Menção Honrosa pela APVE.</li>
+            <li data-i18n="fa3">Trabalho multidisciplinar com foco em planejamento, prazos, resolução de problemas e comunicação técnica.</li>
+            <li data-i18n="fa4">Produzi materiais de divulgação técnica e gerenciei redes sociais do time, unindo engenharia a comunicação.</li>
           </ul>
         </div>
         <div class="exp-stat">APVE<small>honorable mention</small></div>
@@ -709,22 +705,22 @@ footer .sig{color:var(--peach)}
       <a href="https://github.com/FernandaCasali/Formula1-Pipeline" target="_blank" rel="noopener" class="proj hero-card r d2">
         <span class="featured" data-i18n="featured">Destaque</span>
         <div class="proj-num">PROJECT · 001 · <span style="color:var(--metal)">github ↗</span></div>
-        <h3>F1 Analytics <em>Engineering</em></h3>
-        <p data-i18n="p1">Produto de dados end-to-end em Snowflake: ingestão em Python (CSV + API REST), dbt com camadas staging/marts em star schema e visualização em Power BI. Qualidade garantida com dbt tests + source freshness; observabilidade, lineage e metadados via dbt docs. Orquestração e CI/CD com GitHub Actions.</p>
+        <h3>F1 Podium <em>Predictor</em></h3>
+        <p data-i18n="p1">Pipeline reprodutível end-to-end: ingestão de API REST com tratamento de rate-limit, armazenamento em Parquet, feature engineering sem leakage, XGBoost com validação temporal e app em Streamlit. Acertei 15 de 24 pódios (62%) na holdout de 2026. Testes com pytest (inclui teste de data-leakage), linting ruff e CI no GitHub Actions a cada push.</p>
         <div class="proj-metric">
-          <div>end-to-end<small data-i18n="met1">arquitetura</small></div>
-          <div>★★★<small data-i18n="met2">qualidade</small></div>
-          <div>CI/CD<small>automation</small></div>
+          <div>62%<small data-i18n="met1">pódios 2026</small></div>
+          <div>pytest<small data-i18n="met2">+ ruff + CI</small></div>
+          <div>XGBoost<small>temporal CV</small></div>
         </div>
         <div class="proj-tags">
-          <span>Snowflake</span><span>dbt</span><span>Python</span><span>Power BI</span><span>GitHub Actions</span><span>Star Schema</span>
+          <span>Python</span><span>XGBoost</span><span>pandas</span><span>Parquet</span><span>Streamlit</span><span>GitHub Actions</span>
         </div>
       </a>
 
       <a href="https://github.com/FernandaCasali/ChatbotIADados" target="_blank" rel="noopener" class="proj r d3">
         <div class="proj-num">PROJECT · 002 · <span style="color:var(--metal)">github ↗</span></div>
         <h3>DataChat <em>AI</em></h3>
-        <p data-i18n="p-chat">Chatbot em português que transforma perguntas em linguagem natural em consultas SQL executadas sobre banco de vendas. Resultado entregue em tabela + gráfico. LLM Llama 3.3 70B via Groq, orquestrado por LangChain SQL Agent.</p>
+        <p data-i18n="p-chat">Agente LLM (LangChain + Groq API, Llama 3.3 70B) que transforma perguntas de negócio em SQL executado sobre um banco SQLite em read-only e devolve tabela + gráfico no Streamlit. Trato limites de taxa por minuto e por dia separadamente e mantenho chaves fora do versionamento.</p>
         <div class="proj-tags">
           <span>Python</span><span>LangChain</span><span>Groq LLM</span><span>Streamlit</span><span>SQLite</span><span>NL → SQL</span>
         </div>
@@ -733,7 +729,7 @@ footer .sig{color:var(--peach)}
       <a class="proj r d4">
         <div class="proj-num">PROJECT · 003</div>
         <h3 data-i18n="p2-h">Automação de <em>Notas Fiscais</em></h3>
-        <p data-i18n="p2">Pipeline em Python distribuído entre múltiplos usuários para processamento de invoices — de 105 min para 2 min por execução. 98% de redução de tempo e custo, com 100% do tempo do analista liberado para análise estratégica.</p>
+        <p data-i18n="p2">Automação em Python ponta a ponta para processamento de invoices, distribuída entre múltiplos usuários — de 105 min para 2 min por execução (−98% de tempo e custo) e 100% do tempo do analista liberado. Tratamento de erros, logs e padronização integrados ao fluxo.</p>
         <div class="proj-tags">
           <span>Python</span><span>pandas</span><span>win32com</span><span>Outlook</span><span>SAP</span>
         </div>
@@ -742,7 +738,7 @@ footer .sig{color:var(--peach)}
       <a class="proj r d5">
         <div class="proj-num">PROJECT · 004</div>
         <h3 data-i18n="p3-h">Integração <em>SAP</em></h3>
-        <p data-i18n="p3">Automação em Python agendada e integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto, disponibilizando a base atualizada de forma automática para toda a análise downstream.</p>
+        <p data-i18n="p3">Automação em Python agendada e integrada ao SAP GUI que extrai diariamente a carteira de pedidos em aberto e publica a base atualizada automaticamente, substituindo a extração manual e alimentando toda a análise downstream.</p>
         <div class="proj-tags">
           <span>SAP GUI</span><span>Python</span><span>Scheduling</span><span>Monitoring</span>
         </div>
@@ -751,7 +747,7 @@ footer .sig{color:var(--peach)}
       <a href="https://github.com/FernandaCasali/TabelaHash_Prontuarios" target="_blank" rel="noopener" class="proj r d4">
         <div class="proj-num">PROJECT · 005 · <span style="color:var(--metal)">github ↗</span></div>
         <h3>Hash <em>Table</em> · Prontuários</h3>
-        <p data-i18n="p-hash">Estrutura de dados em C para gestão de prontuários médicos usando tabela hash com tratamento de colisões. Projeto acadêmico que mostra fundamentos sólidos de algoritmos, complexidade e manipulação de memória.</p>
+        <p data-i18n="p-hash">Estrutura de dados em C para gestão de prontuários médicos com tabela hash e tratamento de colisões. Projeto acadêmico que trabalha fundamentos de algoritmos, análise de complexidade e manipulação de memória.</p>
         <div class="proj-tags">
           <span>C</span><span>Hash Table</span><span>Data Structures</span><span>Algorithms</span>
         </div>
@@ -760,7 +756,7 @@ footer .sig{color:var(--peach)}
       <a href="https://github.com/FernandaCasali/heuristicas" target="_blank" rel="noopener" class="proj r d5">
         <div class="proj-num">PROJECT · 006 · <span style="color:var(--metal)">github ↗</span></div>
         <h3>Liquid <em>Galaxy</em></h3>
-        <p data-i18n="p4">Pesquisa PIBIT · Google Summer of Code em arquitetura de software para sistemas médicos. Desenvolvimento com Vue.js, Firebase e Python, com foco em avaliação heurística, organização de dados e comunicação científica.</p>
+        <p data-i18n="p4">Pesquisa PIBIT ligada ao Google Summer of Code (RUXAILAB) sobre arquitetura de software para análise heurística de sistemas médicos. Desenvolvi com Vue.js, Firebase e Python, com foco em organização de dados e comunicação científica.</p>
         <div class="proj-tags">
           <span>Vue.js</span><span>Firebase</span><span>Python</span><span>Research</span><span>GSoC</span>
         </div>
@@ -775,8 +771,8 @@ footer .sig{color:var(--peach)}
   <div class="wrap">
     <div class="eyebrow r">04 · <span data-i18n="k-skills">Stack técnico</span></div>
     <div class="skills-head">
-      <h2 class="r d1" data-i18n="skills-h">Ferramentas que <span class="italic">domino</span>.</h2>
-      <p class="r d2" data-i18n="skills-p">Do backend ao dashboard — do pipeline ao storytelling. Um stack construído para entregar produtos de dados confiáveis, escaláveis e com propósito.</p>
+      <h2 class="r d1" data-i18n="skills-h">Ferramentas que eu <span class="italic">uso</span>.</h2>
+      <p class="r d2" data-i18n="skills-p">Da automação em SAP ao dashboard em Power BI, do agente LLM à pipeline testada no CI. Um stack construído para transformar processos manuais em sistemas que se mantêm sozinhos.</p>
     </div>
     <div class="skill-grid">
 
@@ -790,9 +786,9 @@ footer .sig{color:var(--peach)}
 
       <div class="skill-cat r d3">
         <div class="num">02</div>
-        <h3 data-i18n="s2-h">Engenharia de Dados</h3>
+        <h3 data-i18n="s2-h">IA & Engenharia de Dados</h3>
         <div class="skill-chips">
-          <span>dbt</span><span>Snowflake</span><span>Pipelines</span><span>Data Quality</span><span>Lineage</span><span>Observability</span><span>DataOps</span>
+          <span>LangChain</span><span>Groq</span><span>LLM text-to-SQL</span><span>scikit-learn</span><span>XGBoost</span><span>Streamlit</span><span>Parquet</span><span>Em aprendizado: dbt · Airflow · Cloud DW</span>
         </div>
       </div>
 
@@ -806,9 +802,9 @@ footer .sig{color:var(--peach)}
 
       <div class="skill-cat r d2">
         <div class="num">04</div>
-        <h3 data-i18n="s4-h">Automação</h3>
+        <h3 data-i18n="s4-h">Automação & RPA</h3>
         <div class="skill-chips">
-          <span>SAP GUI · Python</span><span>Office Scripts</span><span>Power Automate</span><span>win32com</span><span>requests</span>
+          <span>SAP GUI · Python</span><span>Outlook · win32com</span><span>Office Scripts</span><span>Power Automate</span><span>Selenium</span><span>requests</span>
         </div>
       </div>
 
@@ -816,7 +812,7 @@ footer .sig{color:var(--peach)}
         <div class="num">05</div>
         <h3 data-i18n="s5-h">DevOps & QA</h3>
         <div class="skill-chips">
-          <span>Git / GitHub</span><span>CI/CD</span><span>Maven</span><span>JUnit</span><span>JaCoCo</span><span>Jira</span><span>SCRUM</span>
+          <span>Git / GitHub</span><span>CI/CD · GitHub Actions</span><span>pytest</span><span>ruff</span><span>Docker</span><span>JUnit · JaCoCo</span><span>Maven</span><span>Jira · SCRUM</span>
         </div>
       </div>
 
@@ -886,6 +882,13 @@ footer .sig{color:var(--peach)}
           </div>
           <div class="lang-bar"><i style="--w:25%"></i></div>
         </div>
+        <div class="lang-row">
+          <div class="lang-head">
+            <b data-i18n="l-es">Espanhol</b>
+            <span>A1 · <span data-i18n="l-basic">Básico</span></span>
+          </div>
+          <div class="lang-bar"><i style="--w:25%"></i></div>
+        </div>
         <div style="margin-top:30px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--serif);font-style:italic;color:var(--teal);font-size:.95rem">
           <span data-i18n="lang-foot">Certificação de inglês avançado em Liverpool, 2025.</span>
         </div>
@@ -900,18 +903,15 @@ footer .sig{color:var(--peach)}
   <div class="circle-bg"></div>
   <div class="wrap">
     <div class="eyebrow r">06 · <span data-i18n="k-contact">Contato</span></div>
-    <h2 class="r d1" data-i18n="contact-h">Vamos construir algo<br><em>orientado a dados</em>?</h2>
+    <h2 class="r d1" data-i18n="contact-h">Vamos construir algo<br><em>que se mantém sozinho</em>?</h2>
     <p class="contact-lead r d2" data-i18n="contact-p">
-      Aberta a oportunidades em Análise de Dados, Business Intelligence, Analytics Engineering e Engenharia de Dados — na sua empresa, no seu time, no seu próximo produto de dados.
+      Transformo processos manuais em sistemas que se mantêm sozinhos — com Python, SAP, Power BI e um pouco de IA. Se o seu time tem um dado solto ou um processo repetido, a gente conversa.
     </p>
     <a class="contact-cta r d3" href="mailto:fernanda.t.casali@gmail.com">
       fernanda.t.casali@gmail.com
       <span class="arr">→</span>
     </a>
     <div class="contact-list">
-      <!-- <a class="r d4" href="tel:+5515991011093">
-        <span>↳</span> (15) 99101-1093
-      </a> -->
       <a class="r d5" href="https://www.linkedin.com/in/fernanda-casali/" target="_blank" rel="noopener">
         <span>↳</span> LinkedIn
       </a>
@@ -930,17 +930,6 @@ footer .sig{color:var(--peach)}
 
 <script>
 (function(){
-  /* ===== CUSTOM CURSOR ===== */
-  const cur=document.getElementById('cursor');
-  const dot=document.getElementById('cursorDot');
-  let cx=0,cy=0,tx=0,ty=0;
-  document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;dot.style.left=tx+'px';dot.style.top=ty+'px';});
-  function loop(){cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop);}loop();
-  document.querySelectorAll('a,button,.proj,.exp-row,.value,.skill-cat').forEach(el=>{
-    el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
-    el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
-  });
-
   /* ===== NAV / PROGRESS ===== */
   const nav=document.getElementById('nav');
   const progress=document.getElementById('progress');
@@ -1005,104 +994,108 @@ footer .sig{color:var(--peach)}
   const TXT={
     pt:{
       n1:'Sobre',n2:'Trajetória',n3:'Projetos',n4:'Stack',n5:'Contato',
-      hello:'Olá, prazer —',avail:'Disponível para novas oportunidades',
+      hello:'Olá, prazer —',
       'h-turn':'transformo','h-data':'dados','h-in':'em','h-decision':'decisão',
-      'hero-lead':'Engenheira da Computação <span class="mono">8º semestre</span> construindo produtos de dados end-to-end — da ingestão em Python até o dashboard em Power BI. Atualmente na <b style="color:var(--teal);font-weight:500;font-style:italic">Metso</b>, onde automatizei processos que recuperaram <b style="color:var(--teal);font-weight:500">100% do tempo</b> do analista.',
+      'hero-lead':'Sou estudante de Engenharia da Computação <span class="mono">8º semestre</span> e estagiária de Análise de Dados em Compras na <b style="color:var(--quartz);font-weight:500;font-style:italic">Metso</b>. Projeto automações em Python, pipelines integrados a SAP e Outlook e dashboards em Power BI — a automação de notas fiscais que entreguei reduziu o processo de <b style="color:var(--quartz);font-weight:500">105 min para 2 min</b> (−98%) e liberou 100% do tempo do analista.',
       cta1:'Vamos conversar',cta2:'Ver projetos',scroll:'Role para explorar',
-      'k-about':'Sobre mim','about-h':'Dados que viram <span class="italic">estratégia</span>.',
-      'about-1':'Estudante de <span class="hl">Engenharia da Computação</span> na FACENS, 8º semestre, atuando como estagiária de Análise de Dados em Compras na Metso. Construo produtos de dados e KPIs reutilizáveis ao longo de todo o ciclo — ingestão, transformação, entrega e monitoramento.',
-      'about-2':'Perfil analítico, organizado e orientado a resultados. Foco em qualidade, consistência e governança da informação. Atualmente construo um pipeline <span class="hl">end-to-end em Snowflake + dbt</span>, orquestrado via CI/CD, buscando oportunidades em Engenharia de Dados e Analytics Engineering.',
-      'v1-t':'Dados','v1-p':'Ingestão, modelagem dimensional e star schema',
-      'v2-t':'Automação','v2-p':'Pipelines Python · SAP · Outlook · 98% de ganho',
-      'v3-t':'Qualidade','v3-p':'dbt tests, observabilidade e lineage',
-      'v4-t':'Estratégia','v4-p':'Do dado bruto à decisão de negócio',
-      'k-work':'Trajetória','work-h':'Onde eu <span class="italic">construí</span>.',now:'Presente',
+      'k-about':'Sobre mim','about-h':'Processos manuais viram <span class="ftc-em">sistemas</span>.',
+      'about-1':'Sou estudante de <span class="hl">Engenharia da Computação</span> na FACENS, 8º semestre, e estagiária de Análise de Dados em Compras na Metso. Projeto, desenvolvo e coloco em produção automações em Python ponta a ponta — processamento de notas fiscais, extração diária de SAP e follow-ups por Outlook — com versionamento, testes, tratamento de erros e documentação.',
+      'about-2':'Também construo dashboards de Business Intelligence em Power BI (DAX, Power Query/M, modelagem star schema) que transformam volume operacional em informação para a gestão. Nos projetos pessoais aplico práticas de DataOps: ingestão por APIs, armazenamento em Parquet, validação com <span class="hl">pytest + GitHub Actions</span>, e exploro automação com IA via agentes LLM e integrações.',
+      'v1-t':'Automação','v1-p':'Python · SAP GUI · Outlook · win32com · Selenium',
+      'v2-t':'Dados & BI','v2-p':'Power BI · DAX · Power Query/M · star schema · SQL',
+      'v3-t':'Engenharia','v3-p':'pytest · ruff · GitHub Actions · pandas · Parquet',
+      'v4-t':'IA aplicada','v4-p':'LangChain · Groq · text-to-SQL · XGBoost · scikit-learn',
+      'k-work':'Trajetória','work-h':'Onde eu <span class="ftc-em">construí</span>.',now:'Presente',
       'role-metso':'Estagiária · Análise de Dados em Compras',
-      m1:'Dashboards de Business Intelligence em Power BI para Purchase Orders e indicadores de compras, com cartões de KPI e medidas em DAX.',
-      m2:'Pipelines end-to-end em Python integrados a SAP e Outlook — com validação e monitoramento embutidos. O pipeline de notas fiscais reduziu em 98% o tempo e o custo do processo (105 min → 2 min).',
-      m3:'Pipeline agendado em SAP que gera diariamente a carteira de pedidos em aberto, garantindo disponibilidade e confiabilidade dos dados para análise downstream.',
+      m1:'Projetei e coloquei em produção uma automação end-to-end em Python para processamento de notas fiscais, compartilhada entre múltiplos usuários — caí de 105 para 2 minutos por execução (−98% de tempo e custo) e liberei 100% do tempo do analista na tarefa.',
+      m2:'Construí uma automação em Python integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto e publica a base atualizada de forma automática para toda a análise downstream.',
+      m3:'Automatizei o envio de follow-ups por e-mail integrando Python ao Outlook, eliminando o disparo manual e padronizando a cobrança de pendências.',
+      m4:'Desenvolvi dashboards de Business Intelligence em Power BI para Purchase Orders e indicadores de compras — modelagem star schema, medidas em DAX e uma visão única da carteira de follow-up para a gerência.',
+      's-timecut':'tempo reduzido',
       'role-lg':'Pesquisadora PIBIT · Google Summer of Code (RUXAILAB)',
-      lg1:'Pesquisa sobre arquitetura de software voltada à análise de sistemas médicos com base em avaliação heurística, vinculada ao Google Summer of Code — RUXAILAB.',
-      lg2:'Utilizei Vue.js, Firebase, Figma, JavaScript e Python, aprimorando também habilidades de comunicação científica, organização de dados e pensamento analítico.',
-      lg3:'Aprimorei habilidades em engenharia de software, acessibilidade, usabilidade e documentação técnica, atuando também em atividades de levantamento bibliográfico, modelagem de sistemas e apresentação de resultados.',
+      lg1:'Pesquisei arquitetura de software para análise de sistemas médicos com base em avaliação heurística, vinculada ao Google Summer of Code — RUXAILAB (organização open-source).',
+      lg2:'Trabalhei com Vue.js, Firebase, Python, JavaScript e Figma, organizando dados de pesquisa e produzindo documentação técnica e comunicação científica.',
+      lg3:'Desenvolvi habilidades de engenharia de software, usabilidade e documentação, atuando em levantamento bibliográfico, modelagem de sistemas e apresentação de resultados.',
       volunteer:'Voluntariado','role-falcons':'Equipe de Competição · Estabilidade & Marketing',
-      fa1:'Atuo no desenvolvimento de aeronaves para competições, contribuindo nas áreas de estabilidade & controle e marketing técnico.',
-      fa2:'Participei da criação de soluções inovadoras, como a hélice contra-rotativa premiada com Menção Honrosa pela APVE.',
-      fa3:'Aprendi a trabalhar em equipe multidisciplinar, respeitando prazos e objetivos coletivos, além de desenvolver habilidades de planejamento, resolução de problemas, comunicação, criatividade e liderança proativa.',
-      fa4:'Participei da criação de materiais de divulgação técnica e gerenciamento de redes sociais, unindo conhecimentos de engenharia com estratégias de comunicação.',
-      'k-proj':'Projetos selecionados','proj-h':'O que eu <span class="ital">entrego</span>.',featured:'Destaque',
-      p1:'Produto de dados end-to-end em Snowflake: ingestão em Python (CSV + API REST), dbt com camadas staging/marts em star schema e visualização em Power BI. Qualidade garantida com dbt tests + source freshness; observabilidade, lineage e metadados via dbt docs. Orquestração e CI/CD com GitHub Actions.',
-      met1:'arquitetura',met2:'qualidade',
+      fa1:'Atuei no desenvolvimento de aeronaves para competição, contribuindo nas áreas de estabilidade & controle e marketing técnico.',
+      fa2:'Participei da hélice contra-rotativa premiada com Menção Honrosa pela APVE.',
+      fa3:'Trabalho multidisciplinar com foco em planejamento, prazos, resolução de problemas e comunicação técnica.',
+      fa4:'Produzi materiais de divulgação técnica e gerenciei redes sociais do time, unindo engenharia a comunicação.',
+      'k-proj':'Projetos selecionados','proj-h':'O que eu <span class="ftc-em">entrego</span>.',featured:'Destaque',
+      p1:'Pipeline reprodutível end-to-end: ingestão de API REST com tratamento de rate-limit, armazenamento em Parquet, feature engineering sem leakage, XGBoost com validação temporal e app em Streamlit. Acertei 15 de 24 pódios (62%) na holdout de 2026. Testes com pytest (inclui teste de data-leakage), linting ruff e CI no GitHub Actions a cada push.',
+      met1:'pódios 2026',met2:'+ ruff + CI',
       'p2-h':'Automação de <em>Notas Fiscais</em>',
-      p2:'Pipeline em Python distribuído entre múltiplos usuários para processamento de invoices — de 105 min para 2 min por execução. 98% de redução de tempo e custo, com 100% do tempo do analista liberado para análise estratégica.',
+      p2:'Automação em Python ponta a ponta para processamento de invoices, distribuída entre múltiplos usuários — de 105 min para 2 min por execução (−98% de tempo e custo) e 100% do tempo do analista liberado. Tratamento de erros, logs e padronização integrados ao fluxo.',
       'p3-h':'Integração <em>SAP</em>',
-      p3:'Automação em Python agendada e integrada ao SAP GUI que gera diariamente a carteira de pedidos em aberto, disponibilizando a base atualizada de forma automática para toda a análise downstream.',
-      p4:'Pesquisa PIBIT · Google Summer of Code em arquitetura de software para sistemas médicos. Desenvolvimento com Vue.js, Firebase e Python, com foco em avaliação heurística, organização de dados e comunicação científica.',
-      'p-chat':'Chatbot em português que transforma perguntas em linguagem natural em consultas SQL executadas sobre banco de vendas. Resultado entregue em tabela + gráfico. LLM Llama 3.3 70B via Groq, orquestrado por LangChain SQL Agent.',
-      'p-hash':'Estrutura de dados em C para gestão de prontuários médicos usando tabela hash com tratamento de colisões. Projeto acadêmico que mostra fundamentos sólidos de algoritmos, complexidade e manipulação de memória.',
-      'k-skills':'Stack técnico','skills-h':'Ferramentas que <span class="italic">domino</span>.',
-      'skills-p':'Do backend ao dashboard — do pipeline ao storytelling. Um stack construído para entregar produtos de dados confiáveis, escaláveis e com propósito.',
-      's1-h':'Dados & BI','s2-h':'Engenharia de Dados','s3-h':'Linguagens','s4-h':'Automação','s5-h':'DevOps & QA','s6-h':'Web & Protótipo',
-      'k-edu':'Formação & idiomas','edu-h':'Base, <span class="italic">línguas</span> e cultura.',
+      p3:'Automação em Python agendada e integrada ao SAP GUI que extrai diariamente a carteira de pedidos em aberto e publica a base atualizada automaticamente, substituindo a extração manual e alimentando toda a análise downstream.',
+      p4:'Pesquisa PIBIT ligada ao Google Summer of Code (RUXAILAB) sobre arquitetura de software para análise heurística de sistemas médicos. Desenvolvi com Vue.js, Firebase e Python, com foco em organização de dados e comunicação científica.',
+      'p-chat':'Agente LLM (LangChain + Groq API, Llama 3.3 70B) que transforma perguntas de negócio em SQL executado sobre um banco SQLite em read-only e devolve tabela + gráfico no Streamlit. Trato limites de taxa por minuto e por dia separadamente e mantenho chaves fora do versionamento.',
+      'p-hash':'Estrutura de dados em C para gestão de prontuários médicos com tabela hash e tratamento de colisões. Projeto acadêmico que trabalha fundamentos de algoritmos, análise de complexidade e manipulação de memória.',
+      'k-skills':'Stack técnico','skills-h':'Ferramentas que eu <span class="ftc-em">uso</span>.',
+      'skills-p':'Da automação em SAP ao dashboard em Power BI, do agente LLM à pipeline testada no CI. Um stack construído para transformar processos manuais em sistemas que se mantêm sozinhos.',
+      's1-h':'Dados & BI','s2-h':'IA & Engenharia de Dados','s3-h':'Linguagens','s4-h':'Automação & RPA','s5-h':'DevOps & QA','s6-h':'Web & Protótipo',
+      'k-edu':'Formação & idiomas','edu-h':'Base, <span class="ftc-em">línguas</span> e cultura.',
       'edu1-t':'FACENS — Engenharia da Computação','edu1-i':'em andamento · 8º semestre',
       'edu1-d':'Banco de Dados & SQL, Engenharia de Software, Reconhecimento de Padrões, DevOps & QA, Arquitetura de Computadores',
       'edu2-i':'Programa internacional','edu2-d':'Selo de Empregabilidade (workshop de carreiras) + Selo de Voluntariado (comunicação e trabalho em grupo).',
       'edu3-t':'Colégio Objetivo Sorocaba','edu3-i':'Ensino Médio','edu3-d':'Base sólida em exatas, com destaque em matemática e lógica.',
-      'lang-h':'Idiomas','l-pt':'Português','l-native':'Nativo','l-en':'Inglês','l-de':'Alemão','l-basic':'Básico',
+      'lang-h':'Idiomas','l-pt':'Português','l-native':'Nativo','l-en':'Inglês','l-de':'Alemão','l-es':'Espanhol','l-basic':'Básico',
       'lang-foot':'Certificação de inglês avançado em Liverpool, 2025.',
-      'k-contact':'Contato','contact-h':'Vamos construir algo<br><em>orientado a dados</em>?',
-      'contact-p':'Aberta a oportunidades em Análise de Dados, Business Intelligence, Analytics Engineering e Engenharia de Dados — na sua empresa, no seu time, no seu próximo produto de dados.',
+      'k-contact':'Contato','contact-h':'Vamos construir algo<br><em>que se mantém sozinho</em>?',
+      'contact-p':'Transformo processos manuais em sistemas que se mantêm sozinhos — com Python, SAP, Power BI e um pouco de IA. Se o seu time tem um dado solto ou um processo repetido, a gente conversa.',
       sig:'Sorocaba · SP · Brasil',made:'Feito com dados',care:'& carinho'
     },
     en:{
       n1:'About',n2:'Journey',n3:'Projects',n4:'Stack',n5:'Contact',
-      hello:'Hello, nice to meet you —',avail:'Open to new opportunities',
+      hello:'Hello, nice to meet you —',
       'h-turn':'turning','h-data':'data','h-in':'into','h-decision':'decisions',
-      'hero-lead':'Computer Engineering <span class="mono">8th semester</span> student building end-to-end data products — from Python ingestion to Power BI dashboards. Currently at <b style="color:var(--teal);font-weight:500;font-style:italic">Metso</b>, where I automated processes that gave back <b style="color:var(--teal);font-weight:500">100% of the analyst time</b>.',
+      'hero-lead':'I’m a Computer Engineering <span class="mono">8th semester</span> student and Procurement Data Analyst intern at <b style="color:var(--quartz);font-weight:500;font-style:italic">Metso</b>. I design Python automations, pipelines integrated with SAP and Outlook and Power BI dashboards — the invoice automation I shipped cut the process from <b style="color:var(--quartz);font-weight:500">105 min to 2 min</b> (−98%) and gave back 100% of the analyst time.',
       cta1:'Let’s talk',cta2:'See projects',scroll:'Scroll to explore',
-      'k-about':'About me','about-h':'Data that becomes <span class="italic">strategy</span>.',
-      'about-1':'<span class="hl">Computer Engineering</span> student at FACENS, 8th semester, working as a Procurement Data Analyst intern at Metso. I build reusable data products and KPIs across the full cycle — ingestion, transformation, delivery and monitoring.',
-      'about-2':'Analytical, organized and results-oriented. Focused on data quality, consistency and governance. Currently building an <span class="hl">end-to-end Snowflake + dbt</span> pipeline, orchestrated via CI/CD, pursuing opportunities in Data Engineering and Analytics Engineering.',
-      'v1-t':'Data','v1-p':'Ingestion, dimensional modeling, star schema',
-      'v2-t':'Automation','v2-p':'Python · SAP · Outlook pipelines · 98% gain',
-      'v3-t':'Quality','v3-p':'dbt tests, observability, lineage',
-      'v4-t':'Strategy','v4-p':'From raw data to business decisions',
-      'k-work':'Journey','work-h':'Where I <span class="italic">built</span>.',now:'Present',
+      'k-about':'About me','about-h':'Manual work becomes <span class="ftc-em">systems</span>.',
+      'about-1':'I’m a <span class="hl">Computer Engineering</span> student at FACENS (8th semester) and a Procurement Data Analyst intern at Metso. I design, build and roll out end-to-end Python automations — invoice processing, daily SAP extraction and Outlook follow-ups — with version control, tests, error handling and documentation.',
+      'about-2':'I also build Business Intelligence dashboards in Power BI (DAX, Power Query/M, star-schema models) that turn operational volume into information for management. On my own projects I apply DataOps practices: API ingestion, Parquet storage, validation with <span class="hl">pytest + GitHub Actions</span>, and I explore AI-enabled automation through LLM agents and API integrations.',
+      'v1-t':'Automation','v1-p':'Python · SAP GUI · Outlook · win32com · Selenium',
+      'v2-t':'Data & BI','v2-p':'Power BI · DAX · Power Query/M · star schema · SQL',
+      'v3-t':'Engineering','v3-p':'pytest · ruff · GitHub Actions · pandas · Parquet',
+      'v4-t':'Applied AI','v4-p':'LangChain · Groq · text-to-SQL · XGBoost · scikit-learn',
+      'k-work':'Journey','work-h':'Where I <span class="ftc-em">built</span>.',now:'Present',
       'role-metso':'Procurement Data Analyst Intern',
-      m1:'Business Intelligence dashboards in Power BI for Purchase Orders and procurement KPIs — DAX measures and KPI cards.',
-      m2:'End-to-end Python pipelines integrated with SAP and Outlook — with built-in validation and monitoring. The invoice pipeline cut processing time by 98% (105 min → 2 min).',
-      m3:'Scheduled SAP pipeline that generates the daily open-orders report, ensuring data availability and reliability for downstream analysis.',
+      m1:'Designed and rolled out an end-to-end Python invoice-processing automation shared across multiple users — 105 → 2 minutes per run (−98% time and cost), freeing 100% of the analyst time on the task.',
+      m2:'Built a Python automation integrated with SAP GUI that generates the open purchase-order portfolio every day and publishes a refreshed dataset automatically, replacing manual extraction.',
+      m3:'Automated follow-up e-mail dispatch by integrating Python with Outlook, removing manual sending and standardizing how outstanding items are chased.',
+      m4:'Built Power BI dashboards for Purchase Orders and procurement KPIs — star-schema models, DAX measures and a single follow-up portfolio view for management.',
+      's-timecut':'time cut',
       'role-lg':'PIBIT Researcher · Google Summer of Code (RUXAILAB)',
-      lg1:'Research on software architecture focused on the analysis of medical systems based on heuristic evaluation, linked to Google Summer of Code — RUXAILAB.',
-      lg2:'Used Vue.js, Firebase, Figma, JavaScript and Python, also sharpening scientific communication, data organization and analytical thinking.',
-      lg3:'Improved skills in software engineering, accessibility, usability and technical documentation, also working on bibliographic survey, system modeling and presentation of results.',
+      lg1:'Researched software architecture for medical systems (heuristic evaluation), linked to Google Summer of Code — RUXAILAB, an open-source organization.',
+      lg2:'Worked with Vue.js, Firebase, Python, JavaScript and Figma, organizing research data and producing technical documentation and scientific communication.',
+      lg3:'Improved skills in software engineering, usability and documentation, also working on bibliographic survey, system modeling and presentation of results.',
       volunteer:'Volunteer','role-falcons':'Competition Team · Stability & Marketing',
-      fa1:'Work on competition aircraft development, contributing in stability & control and technical marketing.',
-      fa2:'Took part in innovative solutions, such as the counter-rotating propeller awarded an Honorable Mention by APVE.',
-      fa3:'Learned to work in a multidisciplinary team, respecting deadlines and collective goals, developing planning, problem-solving, communication, creativity and proactive leadership skills.',
-      fa4:'Took part in the creation of technical dissemination materials and social media management, combining engineering knowledge with communication strategies.',
-      'k-proj':'Selected projects','proj-h':'What I <span class="ital">ship</span>.',featured:'Featured',
-      p1:'End-to-end data product on Snowflake: Python ingestion (CSV + REST API), dbt staging/marts in star schema and Power BI. Quality via dbt tests + source freshness; observability, lineage and metadata via dbt docs. Orchestration and CI/CD with GitHub Actions.',
-      met1:'architecture',met2:'quality',
+      fa1:'Worked on competition aircraft development, contributing in stability & control and technical marketing.',
+      fa2:'Took part in the counter-rotating propeller awarded an Honorable Mention by APVE.',
+      fa3:'Multidisciplinary teamwork focused on planning, deadlines, problem-solving and technical communication.',
+      fa4:'Produced technical outreach materials and managed the team’s social media, combining engineering with communication.',
+      'k-proj':'Selected projects','proj-h':'What I <span class="ftc-em">ship</span>.',featured:'Featured',
+      p1:'Reproducible end-to-end pipeline: REST API ingestion with rate-limit handling, Parquet storage, leakage-free feature engineering, XGBoost with temporal validation and a Streamlit app. 15 of 24 podium slots (62%) predicted on the 2026 holdout season. pytest (including a data-leakage test), ruff and GitHub Actions CI on every push.',
+      met1:'2026 podiums',met2:'+ ruff + CI',
       'p2-h':'Invoice <em>Automation</em>',
-      p2:'Python pipeline distributed across multiple users for invoice processing — from 105 min to 2 min per run. 98% time and cost reduction, freeing 100% of the analyst time for strategic work.',
+      p2:'End-to-end Python automation for invoice processing, shared across multiple users — 105 min → 2 min per run (−98% time and cost), freeing 100% of the analyst time. Error handling, logs and standardization baked into the flow.',
       'p3-h':'SAP <em>Integration</em>',
-      p3:'Scheduled Python automation integrated with SAP GUI that generates the daily open-orders report, automatically providing an up-to-date dataset for all downstream analytics.',
-      p4:'PIBIT · Google Summer of Code research on software architecture for medical systems. Built with Vue.js, Firebase and Python — focused on heuristic evaluation, data organization and scientific communication.',
-      'p-chat':'A Portuguese-language chatbot that turns natural language questions into SQL queries over a sales database — results shown as a table and chart. Llama 3.3 70B LLM via Groq, orchestrated by a LangChain SQL agent.',
-      'p-hash':'A C data structure for managing medical records using a hash table with collision handling. Academic project that showcases solid foundations in algorithms, complexity analysis and memory management.',
-      'k-skills':'Technical stack','skills-h':'Tools I <span class="italic">master</span>.',
-      'skills-p':'From backend to dashboard — from pipeline to storytelling. A stack built to deliver reliable, scalable, purposeful data products.',
-      's1-h':'Data & BI','s2-h':'Data Engineering','s3-h':'Languages','s4-h':'Automation','s5-h':'DevOps & QA','s6-h':'Web & Prototyping',
-      'k-edu':'Education & languages','edu-h':'Foundations, <span class="italic">languages</span>, culture.',
+      p3:'Scheduled Python automation integrated with SAP GUI that extracts the open purchase-order portfolio every day and publishes a refreshed dataset automatically, replacing manual extraction and feeding every downstream analysis.',
+      p4:'PIBIT research linked to Google Summer of Code (RUXAILAB) on software architecture for heuristic evaluation of medical systems. Built with Vue.js, Firebase and Python, focused on data organization and scientific communication.',
+      'p-chat':'LLM agent (LangChain + Groq API, Llama 3.3 70B) that turns business questions into SQL over a read-only SQLite database and returns a table and chart in Streamlit. Separate handling for per-minute and per-day API limits; secrets kept out of source control.',
+      'p-hash':'A C data structure for managing medical records using a hash table with collision handling. Academic project covering algorithms fundamentals, complexity analysis and memory management.',
+      'k-skills':'Technical stack','skills-h':'Tools I <span class="ftc-em">use</span>.',
+      'skills-p':'From SAP automation to Power BI dashboards, from LLM agents to tested pipelines in CI. A stack built to turn manual processes into systems that maintain themselves.',
+      's1-h':'Data & BI','s2-h':'AI & Data Engineering','s3-h':'Languages','s4-h':'Automation & RPA','s5-h':'DevOps & QA','s6-h':'Web & Prototyping',
+      'k-edu':'Education & languages','edu-h':'Foundations, <span class="ftc-em">languages</span>, culture.',
       'edu1-t':'FACENS — Computer Engineering','edu1-i':'in progress · 8th semester',
       'edu1-d':'Databases & SQL, Software Engineering, Pattern Recognition, DevOps & QA, Computer Architecture',
       'edu2-i':'International program','edu2-d':'Employability Seal (careers workshop) + Volunteering Seal (communication and group work).',
       'edu3-t':'Colégio Objetivo Sorocaba','edu3-i':'High School','edu3-d':'Strong foundation in math and logic.',
-      'lang-h':'Languages','l-pt':'Portuguese','l-native':'Native','l-en':'English','l-de':'German','l-basic':'Basic',
+      'lang-h':'Languages','l-pt':'Portuguese','l-native':'Native','l-en':'English','l-de':'German','l-es':'Spanish','l-basic':'Basic',
       'lang-foot':'Advanced English certification in Liverpool, 2025.',
-      'k-contact':'Contact','contact-h':'Let’s build something<br><em>data-driven</em>?',
-      'contact-p':'Open to opportunities in Data Analysis, Business Intelligence, Analytics Engineering and Data Engineering — at your company, on your team, on your next data product.',
+      'k-contact':'Contact','contact-h':'Let’s build something<br><em>that runs itself</em>?',
+      'contact-p':'I turn manual processes into systems that maintain themselves — with Python, SAP, Power BI and a bit of AI. If your team has data lying around or a repeated process, let’s talk.',
       sig:'Sorocaba · SP · Brazil',made:'Made with data',care:'& care'
     }
   };
